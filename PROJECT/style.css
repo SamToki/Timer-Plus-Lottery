@@ -1,0 +1,186 @@
+/* For SamToki.github.io/Timer+Lottery */
+
+/* Header */
+.Title {
+    width: 265px;
+}
+.Title a {
+    background-image: url(images/Title.png);
+}
+nav ul {
+    width: 600px;
+}
+nav li {
+    width: calc(100% / 5);
+}
+
+/* Main */
+.SectionTitle {
+    padding: calc(80px + 40px) 0 40px 0;
+}
+    /* 计时 */
+        /* Dashboard */
+        #CtrlGroup_TimerDashboard {
+            position: relative;
+            height: 420px; margin: 0 0 20px 0;
+            justify-content: center; align-items: center;
+        }
+        #Ctrl_TimerDashboardStartTime {
+            position: absolute; top: 100px; left: calc(50% - 80px);
+            width: 160px; height: 40px; margin: 0;
+            display: flex; justify-content: center; align-items: center;
+        }
+        #Ctrl_TimerDashboardEndTime {
+            position: absolute; bottom: 100px; left: calc(50% - 80px);
+            width: 160px; height: 40px; margin: 0;
+            display: flex; justify-content: center; align-items: center;
+        }
+        #Ctrl_TimerDashboardProgring {
+            position: absolute; top: 0;
+            width: 100%; height: 100%; margin: 0;
+        }
+        #Ctrl_TimerDashboardProgring .ProgringFg {
+            position: absolute; top: 0;
+            stroke-dasharray: 917.35 917.35; stroke-dashoffset: 458.67;
+        }
+        #Ctrl_TimerDashboardNeedle {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; margin: 0;
+            display: flex; justify-content: center;
+        }
+        #Ctrl_TimerDashboardCurrentTime {
+            width: 310px; height: 80px; margin: 0;
+        }
+        #CtrlGroup_TimerDashboardCurrentTime .Ctrl {
+            position: relative;
+            width: 40px; height: 80px;
+        }
+        .ScrollingNum {
+            position: absolute; left: 0;
+            width: 100%; height: 100%;
+            transition: none !important;
+        }
+        #ScrollingNum_Timer1 {
+            top: calc(-60px * 9);
+        }
+        #ScrollingNum_Timer2 {
+            top: calc(-60px * 11);
+        }
+        #ScrollingNum_Timer3 {
+            top: calc(-60px * 11);
+        }
+        #ScrollingNum_Timer4 {
+            top: calc(-60px * 7);
+        }
+        #ScrollingNum_Timer5 {
+            top: calc(20px - 40px * 11);
+        }
+        .ScrollingNum p {
+            width: 100%; height: 40px; padding: 0; margin: 20px 0;
+            font-size: 40px;
+            display: flex; justify-content: center; align-items: center;
+        }
+        #ScrollingNum_Timer5 p {
+            margin: 0;
+        }
+        #计时 #Ctrl_TimerDashboardCurrentTimeSeparator {
+            width: 10px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        #计时 #Ctrl_TimerDashboardCurrentTimeSeparator .TimeSeparator {
+            width: 8px; height: 8px; border-radius: 4px; margin: 5px 0;
+            background-color: #000000;
+        }
+        #计时 #Ctrl_TimerDashboardCurrentTimeMillisec {
+            width: 30px;
+            display: flex; align-items: center;
+        }
+
+        /* Manipulation */
+        #计时 #Ctrl_TimerCtrlStart, #计时 #Ctrl_TimerCtrlLap, #计时 #Ctrl_TimerCtrlReset {
+            width: 80px; margin: 0 10px 10px 0;
+        }
+        #计时 #Ctrl_TimerCtrlStart {
+            width: 120px;
+        }
+        #计时 #Ctrl_TimerCtrlLapRecorder {
+            height: auto;
+        }
+        #计时 #Item_TimerOptions .Textbox {
+            width: 80px;
+        }
+        #计时 #Item_TimerPresets .Ctrl {
+            width: 80px; margin: 0 10px 10px 0;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+    /* 摇号 */
+        /* Dashboard */
+        #CtrlGroup_LotteryDashboard {
+            margin: 0 -5px 20px -5px;
+            justify-content: center; align-items: center;
+        }
+        #CtrlGroup_LotteryDashboard .Ctrl {
+            margin: 0 5px 10px 5px;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .Ctrl_LotteryDashboardLargeNum {
+            width: 200px; height: 120px;
+        }
+        .Ctrl_LotteryDashboardSmallNum {
+            width: 100px; height: 60px;
+        }
+        .Ctrl_LotteryDashboardLargeNum p {
+            font-size: 48px;
+        }
+        .Ctrl_LotteryDashboardSmallNum p {
+            font-size: 24px;
+        }
+
+        /* Manipulation */
+        #摇号 #Item_LotteryCtrl .Ctrl {
+            width: 120px; margin: 0 10px 10px 0;
+        }
+        #摇号 .Item .Textbox {
+            width: 80px;
+        }
+
+/* Responsive Web Design */
+@media (max-width: 1150px) {
+    .Title {
+        width: 40px;
+    }
+    nav ul {
+        width: calc(100% - 70px);
+    }
+    .SectionTitle {
+        padding: calc(60px + 40px) 0 40px 0;
+    }
+    #CtrlGroup_TimerDashboard {
+        height: 320px;
+    }
+    #Ctrl_TimerDashboardStartTime {
+        top: 60px;
+    }
+    #Ctrl_TimerDashboardEndTime {
+        bottom: 60px;
+    }
+    #Ctrl_TimerDashboardCurrentTime {
+        width: 250px;
+    }
+    #CtrlGroup_TimerDashboardCurrentTime .Ctrl {
+        width: 30px;
+    }
+    .Ctrl_LotteryDashboardLargeNum {
+        width: 150px; height: 90px;
+    }
+    .Ctrl_LotteryDashboardSmallNum {
+        width: 75px; height: 45px;
+    }
+    .Ctrl_LotteryDashboardLargeNum p {
+        font-size: 36px;
+    }
+    .Ctrl_LotteryDashboardSmallNum p {
+        font-size: 16px;
+    }
+}
