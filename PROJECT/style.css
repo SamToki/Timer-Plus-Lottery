@@ -55,32 +55,32 @@ nav li {
             position: relative;
             width: 40px; height: 80px;
         }
-        .ScrollingNum {
+        .ScrollingNumber {
             position: absolute; left: 0;
             width: 100%; height: 100%;
             transition: none !important;
         }
-        #ScrollingNum_Timer1 {
+        #ScrollingNumber_Timer1 {
             top: calc(-60px * 9);
         }
-        #ScrollingNum_Timer2 {
+        #ScrollingNumber_Timer2 {
             top: calc(-60px * 11);
         }
-        #ScrollingNum_Timer3 {
+        #ScrollingNumber_Timer3 {
             top: calc(-60px * 11);
         }
-        #ScrollingNum_Timer4 {
+        #ScrollingNumber_Timer4 {
             top: calc(-60px * 7);
         }
-        #ScrollingNum_Timer5 {
+        #ScrollingNumber_Timer5 {
             top: calc(20px - 40px * 11);
         }
-        .ScrollingNum p {
+        .ScrollingNumber p {
             width: 100%; height: 40px; padding: 0; margin: 20px 0;
             font-size: 40px;
             display: flex; justify-content: center; align-items: center;
         }
-        #ScrollingNum_Timer5 p {
+        #ScrollingNumber_Timer5 p {
             margin: 0;
         }
         #计时 #Ctrl_TimerDashboardCurrentTimeSeparator {
@@ -124,16 +124,16 @@ nav li {
             margin: 0 5px 10px 5px;
             display: flex; justify-content: center; align-items: center;
         }
-        .Ctrl_LotteryDashboardLargeNum {
+        .Ctrl_LotteryDashboardLargeNumber {
             width: 200px; height: 120px;
         }
-        .Ctrl_LotteryDashboardSmallNum {
+        .Ctrl_LotteryDashboardSmallNumber {
             width: 100px; height: 60px;
         }
-        .Ctrl_LotteryDashboardLargeNum p {
+        .Ctrl_LotteryDashboardLargeNumber p {
             font-size: 48px;
         }
-        .Ctrl_LotteryDashboardSmallNum p {
+        .Ctrl_LotteryDashboardSmallNumber p {
             font-size: 24px;
         }
 
@@ -171,16 +171,16 @@ nav li {
     #CtrlGroup_TimerDashboardCurrentTime .Ctrl {
         width: 30px;
     }
-    .Ctrl_LotteryDashboardLargeNum {
+    .Ctrl_LotteryDashboardLargeNumber {
         width: 150px; height: 90px;
     }
-    .Ctrl_LotteryDashboardSmallNum {
+    .Ctrl_LotteryDashboardSmallNumber {
         width: 75px; height: 45px;
     }
-    .Ctrl_LotteryDashboardLargeNum p {
+    .Ctrl_LotteryDashboardLargeNumber p {
         font-size: 36px;
     }
-    .Ctrl_LotteryDashboardSmallNum p {
+    .Ctrl_LotteryDashboardSmallNumber p {
         font-size: 16px;
     }
 }

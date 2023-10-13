@@ -14,10 +14,10 @@
             Length: 300000, Preset: [0, 300000, 900000, 3600000],
             UseCountdown: true,
             IsRunning: false, IsPaused: false,
-            CurrentTime: 0, StartTime: 0, EndTime: 0,
-            Mark: 300000, Display: [0, 0, 0, 5, 0, 0, 0],
+            ClockTime: 0, StartTime: 0, EndTime: 0,
+            CurrentTime: 300000, Display: [0, 0, 0, 5, 0, 0, 0],
             Lap: {
-                Sequence: 1, PreviousMark: 300000
+                Sequence: 1, PreviousCurrentTime: 300000
             }
         },
         Lottery = {
@@ -34,6 +34,9 @@
     window.onload = function() {
         if(localStorage.System) {System = JSON.parse(localStorage.getItem("System"));}
         switch(System.I18n.Language) {
+            case "zh-CN":
+                // window.location.href = "index.html";
+                break;
             case "en-US":
                 PopupDialogAppear("System_LanguageUnsupported",
                     "Termination",
@@ -51,6 +54,9 @@
                     "Termination",
                     "<span lang='zh-TW'>抱歉，本頁面暫不支援繁體中文。</span>",
                     "<span lang='zh-TW'>確定</span>", "", "");
+                break;
+            default:
+                alert("【系统错误】\n函数「SetI18nLanguage」的参数「System.I18n.Language」为意料之外的值。\n请通过「帮助」版块中的链接向我提供反馈以帮助解决此问题，谢谢！");
                 break;
         }
         RefreshSystem();
@@ -160,32 +166,32 @@
         }
 
         // Core
-            // Update Mark First
+            // Update Current Time First
             if(Timer.UseCountdown == true) {
-                Timer.Mark = Timer.EndTime - Timer.CurrentTime;
+                Timer.CurrentTime = Timer.EndTime - Timer.ClockTime;
             } else {
-                Timer.Mark = Timer.Length - (Timer.EndTime - Timer.CurrentTime);
+                Timer.CurrentTime = Timer.Length - (Timer.EndTime - Timer.ClockTime);
             }
 
-            // Current Time & Start Time & End Time
-            Timer.CurrentTime = Date.now() - new Date().getTimezoneOffset() * 60000;
+            // Clock Time & Start Time & End Time
+            Timer.ClockTime = Date.now() - new Date().getTimezoneOffset() * 60000;
             if(Timer.IsRunning == false && Timer.IsPaused == false) {
-                Timer.StartTime = Timer.CurrentTime;
-                Timer.EndTime = Timer.CurrentTime + Timer.Length;
+                Timer.StartTime = Timer.ClockTime;
+                Timer.EndTime = Timer.ClockTime + Timer.Length;
             }
             if(Timer.IsRunning == true && Timer.IsPaused == true) {
                 if(Timer.UseCountdown == true) {
-                    Timer.EndTime = Timer.CurrentTime + Timer.Mark;
+                    Timer.EndTime = Timer.ClockTime + Timer.CurrentTime;
                 } else {
-                    Timer.EndTime = Timer.CurrentTime + (Timer.Length - Timer.Mark);
+                    Timer.EndTime = Timer.ClockTime + (Timer.Length - Timer.CurrentTime);
                 }
             }
 
-            // Update Mark Again
+            // Update Current Time Again
             if(Timer.UseCountdown == true) {
-                Timer.Mark = Timer.EndTime - Timer.CurrentTime;
+                Timer.CurrentTime = Timer.EndTime - Timer.ClockTime;
             } else {
-                Timer.Mark = Timer.Length - (Timer.EndTime - Timer.CurrentTime);
+                Timer.CurrentTime = Timer.Length - (Timer.EndTime - Timer.ClockTime);
             }
 
         // Dashboard
@@ -194,17 +200,17 @@
             ChangeText("Label_TimerDashboardEndTime", Math.floor(Timer.EndTime % 86400000 / 3600000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + ":" + Math.floor(Timer.EndTime % 3600000 / 60000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + ":" + Math.floor(Timer.EndTime % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}));
 
             // Progring & Needle
-            Percentage = Timer.Mark / Timer.Length * 100;
+            Percentage = Timer.CurrentTime / Timer.Length * 100;
             ChangeProgring("ProgringFg_Timer", 917.35 * (100 - Percentage) / 100);
-            ChangeRotate("Needle_Timer", Timer.Mark / 60000 * 360);
+            ChangeRotate("Needle_Timer", Timer.CurrentTime / 60000 * 360);
 
             // Scrolling Numbers
-            Timer.Display[1] = Math.floor(Timer.Mark / 6000000);
-            Timer.Display[2] = Math.floor(Timer.Mark % 6000000 / 600000);
-            Timer.Display[3] = Math.floor(Timer.Mark % 600000 / 60000);
-            Timer.Display[4] = Math.floor(Timer.Mark % 60000 / 10000);
-            Timer.Display[5] = Timer.Mark % 10000 / 1000;
-            Timer.Display[6] = Math.floor(Timer.Mark % 1000 / 10);
+            Timer.Display[1] = Math.floor(Timer.CurrentTime / 6000000);
+            Timer.Display[2] = Math.floor(Timer.CurrentTime % 6000000 / 600000);
+            Timer.Display[3] = Math.floor(Timer.CurrentTime % 600000 / 60000);
+            Timer.Display[4] = Math.floor(Timer.CurrentTime % 60000 / 10000);
+            Timer.Display[5] = Timer.CurrentTime % 10000 / 1000;
+            Timer.Display[6] = Math.floor(Timer.CurrentTime % 1000 / 10);
             if(System.Display.Anim.Speed == "none") {
                 Timer.Display[5] = Math.floor(Timer.Display[5]);
             } else {
@@ -221,7 +227,7 @@
             ChangeText("Label_TimerDashboardCurrentTimeMillisec", "." + Timer.Display[6].toLocaleString(undefined, {minimumIntegerDigits: 2}));
         
         // Time Up
-        if(Timer.CurrentTime >= Timer.EndTime) {
+        if(Timer.ClockTime >= Timer.EndTime) {
             Interaction.PopupDialogEvent = "Timer_TimeUp";
             PopupDialogAppear("Completion",
                 "计时完成！<br />" +
@@ -390,26 +396,26 @@
             if(Timer.UseCountdown == true) {
                 ChangeText("Label_TimerCtrlLapRecorder",
                     "#" + Timer.Lap.Sequence +
-                    "　+" + Math.floor((Timer.Lap.PreviousMark - Timer.Mark) / 60000) + ":" + Math.floor((Timer.Lap.PreviousMark - Timer.Mark) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Lap.PreviousMark - Timer.Mark) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
-                    "　" + Math.floor((Timer.Length - Timer.Mark) / 60000) + ":" + Math.floor((Timer.Length - Timer.Mark) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Length - Timer.Mark) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "<br />" +
+                    "　+" + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) / 60000) + ":" + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
+                    "　" + Math.floor((Timer.Length - Timer.CurrentTime) / 60000) + ":" + Math.floor((Timer.Length - Timer.CurrentTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Length - Timer.CurrentTime) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "<br />" +
                     ReadText("Label_TimerCtrlLapRecorder"));
             } else {
                 ChangeText("Label_TimerCtrlLapRecorder",
                     "#" + Timer.Lap.Sequence +
-                    "　+" + Math.floor((Timer.Mark - Timer.Lap.PreviousMark) / 60000) + ":" + Math.floor((Timer.Mark - Timer.Lap.PreviousMark) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Mark - Timer.Lap.PreviousMark) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
-                    "　" + Math.floor(Timer.Mark / 60000) + ":" + Math.floor(Timer.Mark % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor(Timer.Mark % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "<br />" +
+                    "　+" + Math.floor((Timer.CurrentTime - Timer.Lap.PreviousCurrentTime) / 60000) + ":" + Math.floor((Timer.CurrentTime - Timer.Lap.PreviousCurrentTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.CurrentTime - Timer.Lap.PreviousCurrentTime) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
+                    "　" + Math.floor(Timer.CurrentTime / 60000) + ":" + Math.floor(Timer.CurrentTime % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor(Timer.CurrentTime % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "<br />" +
                     ReadText("Label_TimerCtrlLapRecorder"));
             }
             Timer.Lap.Sequence++;
-            Timer.Lap.PreviousMark = Timer.Mark;
+            Timer.Lap.PreviousCurrentTime = Timer.CurrentTime;
         }
         function TimerReset() {
             Timer.IsRunning = false; Timer.IsPaused = false;
             Timer.Lap.Sequence = 1;
             if(Timer.UseCountdown == true) {
-                Timer.Lap.PreviousMark = Timer.Length;
+                Timer.Lap.PreviousCurrentTime = Timer.Length;
             } else {
-                Timer.Lap.PreviousMark = 0;
+                Timer.Lap.PreviousCurrentTime = 0;
             }
             RefreshTimer();
             ChangeText("Label_TimerCtrlLapRecorder", "");
@@ -432,7 +438,7 @@
             } else {
                 Timer.UseCountdown = false;
             }
-            Timer.Lap.PreviousMark = Timer.Length - Timer.Lap.PreviousMark;
+            Timer.Lap.PreviousCurrentTime = Timer.Length - Timer.Lap.PreviousCurrentTime;
             RefreshTimer();
         }
 
@@ -540,7 +546,7 @@
             System.I18n.Language = ReadValue("Combobox_SettingsI18nLanguage");
             switch(System.I18n.Language) {
                 case "zh-CN":
-                    window.location.href = "index.html";
+                    // window.location.href = "index.html";
                     break;
                 case "en-US":
                     PopupDialogAppear("System_LanguageUnsupported",
