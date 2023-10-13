@@ -228,8 +228,8 @@
         
         // Time Up
         if(Timer.ClockTime >= Timer.EndTime) {
-            Interaction.PopupDialogEvent = "Timer_TimeUp";
-            PopupDialogAppear("Completion",
+            PopupDialogAppear("Timer_TimeUp",
+                "Completion",
                 "计时完成！<br />" +
                 "从 " + ReadText("Label_TimerDashboardStartTime") + " 至 " + ReadText("Label_TimerDashboardEndTime") + "。<br />" +
                 "设定时长 " + Math.floor(Timer.Length / 60000) + "分" + Math.floor(Timer.Length % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "秒，实际时长 " + Math.floor((Timer.EndTime - Timer.StartTime) / 60000) + "分" + Math.floor((Timer.EndTime - Timer.StartTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "秒。",
