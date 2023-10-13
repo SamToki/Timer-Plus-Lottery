@@ -14,10 +14,10 @@
             Length: 300000, Preset: [0, 300000, 900000, 3600000],
             UseCountdown: true,
             IsRunning: false, IsPaused: false,
-            CurrTime: 0, StartTime: 0, EndTime: 0,
+            CurrentTime: 0, StartTime: 0, EndTime: 0,
             Mark: 300000, Display: [0, 0, 0, 5, 0, 0, 0],
             Lap: {
-                Seq: 1, PrevMark: 300000
+                Sequence: 1, PreviousMark: 300000
             }
         },
         Lottery = {
@@ -26,8 +26,8 @@
                 Min: 1, Max: 50
             },
             PreventDuplication: true,
-            Num: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            Prog: 0
+            Number: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            Progress: 0
         };
 
     // Load Configuration
@@ -110,11 +110,14 @@
                 ChangeHide("Topbar");
                 ChangePadding("SectionTitleBelowTopbar", "40px 0 40px 0");
             }
-            ChangeValue("Combobox_SettingsDisplayAnimSpd", System.Display.Anim.Spd);
-            ChangeAnimSpdOverall(System.Display.Anim.Spd);
+            ChangeValue("Combobox_SettingsDisplayAnimSpeed", System.Display.Anim.Speed);
+            ChangeAnimSpeedOverall(System.Display.Anim.Speed);
 
             // Sound
             ChangeChecked("Checkbox_SettingsSoundPlaySound", System.Sound.PlaySound);
+            
+            // I18n
+            ChangeValue("Combobox_SettingsI18nLanguage", System.I18n.Language);
 
             // Dev
             ChangeChecked("Checkbox_SettingsDevShowAllBorders", System.Dev.ShowAllBorders);
@@ -139,30 +142,30 @@
         // Core
             // Update Mark First
             if(Timer.UseCountdown == true) {
-                Timer.Mark = Timer.EndTime - Timer.CurrTime;
+                Timer.Mark = Timer.EndTime - Timer.CurrentTime;
             } else {
-                Timer.Mark = Timer.Length - (Timer.EndTime - Timer.CurrTime);
+                Timer.Mark = Timer.Length - (Timer.EndTime - Timer.CurrentTime);
             }
 
-            // Curr Time & Start Time & End Time
-            Timer.CurrTime = Date.now() - new Date().getTimezoneOffset() * 60000;
+            // Current Time & Start Time & End Time
+            Timer.CurrentTime = Date.now() - new Date().getTimezoneOffset() * 60000;
             if(Timer.IsRunning == false && Timer.IsPaused == false) {
-                Timer.StartTime = Timer.CurrTime;
-                Timer.EndTime = Timer.CurrTime + Timer.Length;
+                Timer.StartTime = Timer.CurrentTime;
+                Timer.EndTime = Timer.CurrentTime + Timer.Length;
             }
             if(Timer.IsRunning == true && Timer.IsPaused == true) {
                 if(Timer.UseCountdown == true) {
-                    Timer.EndTime = Timer.CurrTime + Timer.Mark;
+                    Timer.EndTime = Timer.CurrentTime + Timer.Mark;
                 } else {
-                    Timer.EndTime = Timer.CurrTime + (Timer.Length - Timer.Mark);
+                    Timer.EndTime = Timer.CurrentTime + (Timer.Length - Timer.Mark);
                 }
             }
 
             // Update Mark Again
             if(Timer.UseCountdown == true) {
-                Timer.Mark = Timer.EndTime - Timer.CurrTime;
+                Timer.Mark = Timer.EndTime - Timer.CurrentTime;
             } else {
-                Timer.Mark = Timer.Length - (Timer.EndTime - Timer.CurrTime);
+                Timer.Mark = Timer.Length - (Timer.EndTime - Timer.CurrentTime);
             }
 
         // Dashboard
@@ -182,7 +185,7 @@
             Timer.Display[4] = Math.floor(Timer.Mark % 60000 / 10000);
             Timer.Display[5] = Timer.Mark % 10000 / 1000;
             Timer.Display[6] = Math.floor(Timer.Mark % 1000 / 10);
-            if(System.Display.Anim.Spd == "none") {
+            if(System.Display.Anim.Speed == "none") {
                 Timer.Display[5] = Math.floor(Timer.Display[5]);
             } else {
                 if(Timer.Display[5] > 9) {Timer.Display[4] = Timer.Display[4] + (Timer.Display[5] - 9);} // Imitating the cockpit PFD number scrolling effect.
@@ -190,15 +193,15 @@
                 if(Timer.Display[3] > 9) {Timer.Display[2] = Timer.Display[2] + (Timer.Display[3] - 9);}
                 if(Timer.Display[2] > 9) {Timer.Display[1] = Timer.Display[1] + (Timer.Display[2] - 9);}
             }
-            ChangeTop("ScrollingNum_Timer1", -60 * (9 - Timer.Display[1]) + "px");
-            ChangeTop("ScrollingNum_Timer2", -60 * (11 - Timer.Display[2]) + "px");
-            ChangeTop("ScrollingNum_Timer3", -60 * (11 - Timer.Display[3]) + "px");
-            ChangeTop("ScrollingNum_Timer4", -60 * (7 - Timer.Display[4]) + "px");
-            ChangeTop("ScrollingNum_Timer5", 20 - 40 * (11 - Timer.Display[5]) + "px");
+            ChangeTop("ScrollingNumber_Timer1", -60 * (9 - Timer.Display[1]) + "px");
+            ChangeTop("ScrollingNumber_Timer2", -60 * (11 - Timer.Display[2]) + "px");
+            ChangeTop("ScrollingNumber_Timer3", -60 * (11 - Timer.Display[3]) + "px");
+            ChangeTop("ScrollingNumber_Timer4", -60 * (7 - Timer.Display[4]) + "px");
+            ChangeTop("ScrollingNumber_Timer5", 20 - 40 * (11 - Timer.Display[5]) + "px");
             ChangeText("Label_TimerDashboardCurrentTimeMillisec", "." + Timer.Display[6].toLocaleString(undefined, {minimumIntegerDigits: 2}));
         
         // Time Up
-        if(Timer.CurrTime >= Timer.EndTime) {
+        if(Timer.CurrentTime >= Timer.EndTime) {
             Interaction.PopupDialogEvent = "Timer_TimeUp";
             PopupDialogAppear("Completion",
                 "计时完成！<br />" +
@@ -255,19 +258,19 @@
     // Lottery
     function RefreshLottery() {
         // Dashboard
-        ChangeText("Label_LotteryDashboardNum01", Lottery.Num[1]);
-        ChangeText("Label_LotteryDashboardNum02", Lottery.Num[2]);
-        ChangeText("Label_LotteryDashboardNum03", Lottery.Num[3]);
-        ChangeText("Label_LotteryDashboardNum04", Lottery.Num[4]);
-        ChangeText("Label_LotteryDashboardNum05", Lottery.Num[5]);
-        ChangeText("Label_LotteryDashboardNum06", Lottery.Num[6]);
-        ChangeText("Label_LotteryDashboardNum07", Lottery.Num[7]);
-        ChangeText("Label_LotteryDashboardNum08", Lottery.Num[8]);
-        ChangeText("Label_LotteryDashboardNum09", Lottery.Num[9]);
-        ChangeText("Label_LotteryDashboardNum10", Lottery.Num[10]);
+        ChangeText("Label_LotteryDashboardNumber01", Lottery.Number[1]);
+        ChangeText("Label_LotteryDashboardNumber02", Lottery.Number[2]);
+        ChangeText("Label_LotteryDashboardNumber03", Lottery.Number[3]);
+        ChangeText("Label_LotteryDashboardNumber04", Lottery.Number[4]);
+        ChangeText("Label_LotteryDashboardNumber05", Lottery.Number[5]);
+        ChangeText("Label_LotteryDashboardNumber06", Lottery.Number[6]);
+        ChangeText("Label_LotteryDashboardNumber07", Lottery.Number[7]);
+        ChangeText("Label_LotteryDashboardNumber08", Lottery.Number[8]);
+        ChangeText("Label_LotteryDashboardNumber09", Lottery.Number[9]);
+        ChangeText("Label_LotteryDashboardNumber10", Lottery.Number[10]);
 
         // Ctrls
-        if(Lottery.Prog != 0) {
+        if(Lottery.Progress != 0) {
             ChangeDisabled("Cmdbtn_LotteryCtrlRoll", true);
         } else {
             ChangeDisabled("Cmdbtn_LotteryCtrlRoll", false);
@@ -305,34 +308,34 @@
     function LotteryRoller() {
         // Move the Lottery Queue
         for(Looper = 10; Looper >= 2; Looper--) {
-            Lottery.Num[Looper] = Lottery.Num[Looper - 1];
+            Lottery.Number[Looper] = Lottery.Number[Looper - 1];
         }
 
         // Roll A New Number
         do { // Prevent rolling a number that already exists in the lottery queue.
-            Lottery.Num[1] = Randomize(Lottery.Range.Min, Lottery.Range.Max);
+            Lottery.Number[1] = Randomize(Lottery.Range.Min, Lottery.Range.Max);
             if(Lottery.Mode == "Poker") {
-                if(Lottery.Num[1] == 1) {
-                    Lottery.Num[1] = "A";
+                if(Lottery.Number[1] == 1) {
+                    Lottery.Number[1] = "A";
                 }
-                if(Lottery.Num[1] == 11) {
-                    Lottery.Num[1] = "J";
+                if(Lottery.Number[1] == 11) {
+                    Lottery.Number[1] = "J";
                 }
-                if(Lottery.Num[1] == 12) {
-                    Lottery.Num[1] = "Q";
+                if(Lottery.Number[1] == 12) {
+                    Lottery.Number[1] = "Q";
                 }
-                if(Lottery.Num[1] == 13) {
-                    Lottery.Num[1] = "K";
+                if(Lottery.Number[1] == 13) {
+                    Lottery.Number[1] = "K";
                 }
             }
         } while(Lottery.PreventDuplication == true && Lottery.Range.Max - Lottery.Range.Min >= 9 && IsDuplicationInLotteryQueue() == true);
 
         // Make Progress
-        Lottery.Prog++;
+        Lottery.Progress++;
 
         // Finish Rolling
-        if(Lottery.Prog > 10) {
-            Lottery.Prog = 0;
+        if(Lottery.Progress > 10) {
+            Lottery.Progress = 0;
             clearInterval(Automation.LotteryRoller);
         }
 
@@ -341,7 +344,7 @@
     }
     function IsDuplicationInLotteryQueue() {
         for(Looper = 2; Looper <= 10; Looper++) {
-            if(Lottery.Num[Looper] == Lottery.Num[1]) {
+            if(Lottery.Number[Looper] == Lottery.Number[1]) {
                 return true;
             }
         }
@@ -366,27 +369,27 @@
         function TimerLap() {
             if(Timer.UseCountdown == true) {
                 ChangeText("Label_TimerCtrlLapRecorder",
-                    "#" + Timer.Lap.Seq +
-                    "　+" + Math.floor((Timer.Lap.PrevMark - Timer.Mark) / 60000) + ":" + Math.floor((Timer.Lap.PrevMark - Timer.Mark) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Lap.PrevMark - Timer.Mark) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
+                    "#" + Timer.Lap.Sequence +
+                    "　+" + Math.floor((Timer.Lap.PreviousMark - Timer.Mark) / 60000) + ":" + Math.floor((Timer.Lap.PreviousMark - Timer.Mark) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Lap.PreviousMark - Timer.Mark) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
                     "　" + Math.floor((Timer.Length - Timer.Mark) / 60000) + ":" + Math.floor((Timer.Length - Timer.Mark) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Length - Timer.Mark) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "<br />" +
                     ReadText("Label_TimerCtrlLapRecorder"));
             } else {
                 ChangeText("Label_TimerCtrlLapRecorder",
-                    "#" + Timer.Lap.Seq +
-                    "　+" + Math.floor((Timer.Mark - Timer.Lap.PrevMark) / 60000) + ":" + Math.floor((Timer.Mark - Timer.Lap.PrevMark) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Mark - Timer.Lap.PrevMark) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
+                    "#" + Timer.Lap.Sequence +
+                    "　+" + Math.floor((Timer.Mark - Timer.Lap.PreviousMark) / 60000) + ":" + Math.floor((Timer.Mark - Timer.Lap.PreviousMark) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Mark - Timer.Lap.PreviousMark) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
                     "　" + Math.floor(Timer.Mark / 60000) + ":" + Math.floor(Timer.Mark % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor(Timer.Mark % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "<br />" +
                     ReadText("Label_TimerCtrlLapRecorder"));
             }
-            Timer.Lap.Seq++;
-            Timer.Lap.PrevMark = Timer.Mark;
+            Timer.Lap.Sequence++;
+            Timer.Lap.PreviousMark = Timer.Mark;
         }
         function TimerReset() {
             Timer.IsRunning = false; Timer.IsPaused = false;
-            Timer.Lap.Seq = 1;
+            Timer.Lap.Sequence = 1;
             if(Timer.UseCountdown == true) {
-                Timer.Lap.PrevMark = Timer.Length;
+                Timer.Lap.PreviousMark = Timer.Length;
             } else {
-                Timer.Lap.PrevMark = 0;
+                Timer.Lap.PreviousMark = 0;
             }
             RefreshTimer();
             ChangeText("Label_TimerCtrlLapRecorder", "");
@@ -409,7 +412,7 @@
             } else {
                 Timer.UseCountdown = false;
             }
-            Timer.Lap.PrevMark = Timer.Length - Timer.Lap.PrevMark;
+            Timer.Lap.PreviousMark = Timer.Length - Timer.Lap.PreviousMark;
             RefreshTimer();
         }
 
@@ -427,15 +430,15 @@
     // Lottery
         // Ctrls
         function LotteryRoll() {
-            Lottery.Prog = 1;
+            Lottery.Progress = 1;
             Automation.LotteryRoller = setInterval(LotteryRoller, 100);
             RefreshLottery();
         }
         function LotteryReset() {
             for(Looper = 1; Looper <= 10; Looper++) {
-                Lottery.Num[Looper] = 0;
+                Lottery.Number[Looper] = 0;
             }
-            Lottery.Prog = 0;
+            Lottery.Progress = 0;
             RefreshLottery();
         }
 
@@ -497,8 +500,8 @@
             }
             RefreshSystem();
         }
-        function SetDisplayAnimSpd() {
-            System.Display.Anim.Spd = ReadValue("Combobox_SettingsDisplayAnimSpd");
+        function SetDisplayAnimSpeed() {
+            System.Display.Anim.Speed = ReadValue("Combobox_SettingsDisplayAnimSpeed");
             RefreshSystem();
         }
 
@@ -508,6 +511,38 @@
                 System.Sound.PlaySound = true;
             } else {
                 System.Sound.PlaySound = false;
+            }
+            RefreshSystem();
+        }
+
+        // I18n
+        function SetI18nLanguage() {
+            System.I18n.Language = ReadValue("Combobox_SettingsI18nLanguage");
+            switch(System.I18n.Language) {
+                case "zh-CN":
+                    window.location.href = "index.html";
+                    break;
+                case "en-US":
+                    PopupDialogAppear("System_LanguageUnsupported",
+                        "Termination",
+                        "Sorry, this page currently does not support English (US).",
+                        "OK", "", "");
+                    break;
+                case "ja-JP":
+                    PopupDialogAppear("System_LanguageUnsupported",
+                        "Termination",
+                        "すみません。このページは日本語にまだサポートしていません。",
+                        "OK", "", "");
+                    break;
+                case "zh-TW":
+                    PopupDialogAppear("System_LanguageUnsupported",
+                        "Termination",
+                        "抱歉，本頁面暫不支援繁體中文。",
+                        "確定", "", "");
+                    break;
+                default:
+                    alert("【系统错误】\n参数「System.Display.Theme」为意料之外的值。\n请通过「帮助」版块中的链接向我提供反馈以帮助解决此问题，谢谢！");
+                    break;
             }
             RefreshSystem();
         }
@@ -533,6 +568,15 @@
     // Popup Dialog Answer
     function PopupDialogAnswer(Selector) {
         switch(Interaction.PopupDialogEvent) {
+            case "System_LanguageUnsupported":
+                switch(Selector) {
+                    case 1:
+                        break;
+                    default:
+                        alert("【系统错误】\n函数「PopupDialogAnswer」的参数「Selector」为意料之外的值。\n请通过「帮助」版块中的链接向我提供反馈以帮助解决此问题，谢谢！");
+                        break;
+                }
+                break;
             case "Timer_TimeUp":
                 switch(Selector) {
                     case 1:
