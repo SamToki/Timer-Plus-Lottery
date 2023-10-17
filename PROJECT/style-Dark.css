@@ -2,8 +2,8 @@
     /* This is a theme variant, so only colors along with few things are configured. */
 
 /* Main */
-    /* 计时 */
+    /* Timer */
         /* Dashboard */
-        #计时 #Ctrl_TimerDashboardCurrentTimeSeparator .TimeSeparator {
+        #Timer #Ctrl_TimerDashboardCurrentTimeSeparator .TimeSeparator {
             background-color: #FFFFFF;
         }

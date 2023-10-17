@@ -18,7 +18,7 @@ nav li {
 .SectionTitle {
     padding: calc(80px + 40px) 0 40px 0;
 }
-    /* 计时 */
+    /* Timer */
         /* Dashboard */
         #CtrlGroup_TimerDashboard {
             position: relative;
@@ -83,38 +83,38 @@ nav li {
         #ScrollingNumber_Timer5 p {
             margin: 0;
         }
-        #计时 #Ctrl_TimerDashboardCurrentTimeSeparator {
+        #Timer #Ctrl_TimerDashboardCurrentTimeSeparator {
             width: 10px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
-        #计时 #Ctrl_TimerDashboardCurrentTimeSeparator .TimeSeparator {
+        #Timer #Ctrl_TimerDashboardCurrentTimeSeparator .TimeSeparator {
             width: 8px; height: 8px; border-radius: 4px; margin: 5px 0;
             background-color: #000000;
         }
-        #计时 #Ctrl_TimerDashboardCurrentTimeMillisec {
+        #Timer #Ctrl_TimerDashboardCurrentTimeMillisec {
             width: 30px;
             display: flex; align-items: center;
         }
 
         /* Manipulation */
-        #计时 #Ctrl_TimerCtrlStart, #计时 #Ctrl_TimerCtrlLap, #计时 #Ctrl_TimerCtrlReset {
+        #Timer #Ctrl_TimerCtrlStart, #Timer #Ctrl_TimerCtrlLap, #Timer #Ctrl_TimerCtrlReset {
             width: 80px; margin: 0 10px 10px 0;
         }
-        #计时 #Ctrl_TimerCtrlStart {
+        #Timer #Ctrl_TimerCtrlStart {
             width: 120px;
         }
-        #计时 #Ctrl_TimerCtrlLapRecorder {
+        #Timer #Ctrl_TimerCtrlLapRecorder {
             height: auto;
         }
-        #计时 #Item_TimerOptions .Textbox {
+        #Timer #Item_TimerOptions .Textbox {
             width: 80px;
         }
-        #计时 #Item_TimerPresets .Ctrl {
+        #Timer #Item_TimerPresets .Ctrl {
             width: 80px; margin: 0 10px 10px 0;
             display: flex; justify-content: center; align-items: center;
         }
 
-    /* 摇号 */
+    /* Lottery */
         /* Dashboard */
         #CtrlGroup_LotteryDashboard {
             margin: 0 -5px 20px -5px;
@@ -138,10 +138,10 @@ nav li {
         }
 
         /* Manipulation */
-        #摇号 #Item_LotteryCtrl .Ctrl {
+        #Lottery #Item_LotteryCtrl .Ctrl {
             width: 120px; margin: 0 10px 10px 0;
         }
-        #摇号 .Item .Textbox {
+        #Lottery .Item .Textbox {
             width: 80px;
         }
 

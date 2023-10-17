@@ -6,7 +6,7 @@
         // Unsaved
         var Elements, Looper = 0, Percentage = 0,
         Automation = {
-            ClockTimer, TimerSeparatorBlink, LotteryRoller
+            ClockTimer, TimeSeparatorBlink, LotteryRoller
         };
         
         // Saved
@@ -268,7 +268,7 @@
         // Save Configuration
         localStorage.setItem("TimerPlusLottery_Timer", JSON.stringify(Timer));
     }
-    function TimerSeparatorBlink() {
+    function TimeSeparatorBlink() {
         Elements = document.getElementsByClassName("TimeSeparator");
         if(Timer.IsRunning == true && Timer.IsPaused == false && Elements[0].style.opacity == "") {
             for(Looper = 0; Looper < Elements.length; Looper++) {
@@ -622,4 +622,4 @@
 
 // Automations
     // Time Separator Blink
-    Automation.TimerSeparatorBlink = setInterval(TimerSeparatorBlink, 500);
+    Automation.TimeSeparatorBlink = setInterval(TimeSeparatorBlink, 500);
