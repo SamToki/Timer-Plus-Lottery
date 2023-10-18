@@ -2,185 +2,185 @@
 
 /* Header */
 .Title {
-    width: 265px;
+	width: 265px;
 }
 .Title a {
-    background-image: url(images/Title.png);
+	background-image: url(images/Title.png);
 }
 nav ul {
-    width: 600px;
+	width: 600px;
 }
 nav li {
-    width: calc(100% / 5);
+	width: calc(100% / 5);
 }
 
 /* Main */
 .SectionTitle {
-    padding: calc(80px + 40px) 0 40px 0;
+	padding: calc(80px + 40px) 0 40px 0;
 }
-    /* Timer */
-        /* Dashboard */
-        #CtrlGroup_TimerDashboard {
-            position: relative;
-            height: 420px; margin: 0 0 20px 0;
-            justify-content: center; align-items: center;
-        }
-        #Ctrl_TimerDashboardStartTime {
-            position: absolute; top: 100px; left: calc(50% - 80px);
-            width: 160px; height: 40px; margin: 0;
-            display: flex; justify-content: center; align-items: center;
-        }
-        #Ctrl_TimerDashboardEndTime {
-            position: absolute; bottom: 100px; left: calc(50% - 80px);
-            width: 160px; height: 40px; margin: 0;
-            display: flex; justify-content: center; align-items: center;
-        }
-        #Ctrl_TimerDashboardProgring {
-            position: absolute; top: 0;
-            width: 100%; height: 100%; margin: 0;
-        }
-        #Ctrl_TimerDashboardProgring .ProgringFg {
-            position: absolute; top: 0;
-            stroke-dasharray: 917.35 917.35; stroke-dashoffset: 458.67;
-        }
-        #Ctrl_TimerDashboardNeedle {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; margin: 0;
-            display: flex; justify-content: center;
-        }
-        #Ctrl_TimerDashboardCurrentTime {
-            width: 310px; height: 80px; margin: 0;
-        }
-        #CtrlGroup_TimerDashboardCurrentTime .Ctrl {
-            position: relative;
-            width: 40px; height: 80px;
-        }
-        .ScrollingNumber {
-            position: absolute; left: 0;
-            width: 100%; height: 100%;
-            transition: none !important;
-        }
-        #ScrollingNumber_Timer1 {
-            top: calc(-60px * 9);
-        }
-        #ScrollingNumber_Timer2 {
-            top: calc(-60px * 11);
-        }
-        #ScrollingNumber_Timer3 {
-            top: calc(-60px * 11);
-        }
-        #ScrollingNumber_Timer4 {
-            top: calc(-60px * 7);
-        }
-        #ScrollingNumber_Timer5 {
-            top: calc(20px - 40px * 11);
-        }
-        .ScrollingNumber p {
-            width: 100%; height: 40px; padding: 0; margin: 20px 0;
-            font-size: 40px;
-            display: flex; justify-content: center; align-items: center;
-        }
-        #ScrollingNumber_Timer5 p {
-            margin: 0;
-        }
-        #Timer #Ctrl_TimerDashboardCurrentTimeSeparator {
-            width: 10px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-        }
-        #Timer #Ctrl_TimerDashboardCurrentTimeSeparator .TimeSeparator {
-            width: 8px; height: 8px; border-radius: 4px; margin: 5px 0;
-            background-color: #000000;
-        }
-        #Timer #Ctrl_TimerDashboardCurrentTimeMillisec {
-            width: 30px;
-            display: flex; align-items: center;
-        }
+	/* Timer */
+		/* Dashboard */
+		#CtrlGroup_TimerDashboard {
+			position: relative;
+			height: 420px; margin: 0 0 20px 0;
+			justify-content: center; align-items: center;
+		}
+		#Ctrl_TimerDashboardStartTime {
+			position: absolute; top: 100px; left: calc(50% - 80px);
+			width: 160px; height: 40px; margin: 0;
+			display: flex; justify-content: center; align-items: center;
+		}
+		#Ctrl_TimerDashboardEndTime {
+			position: absolute; bottom: 100px; left: calc(50% - 80px);
+			width: 160px; height: 40px; margin: 0;
+			display: flex; justify-content: center; align-items: center;
+		}
+		#Ctrl_TimerDashboardProgring {
+			position: absolute; top: 0;
+			width: 100%; height: 100%; margin: 0;
+		}
+		#Ctrl_TimerDashboardProgring .ProgringFg {
+			position: absolute; top: 0;
+			stroke-dasharray: 917.35 917.35; stroke-dashoffset: 458.67;
+		}
+		#Ctrl_TimerDashboardNeedle {
+			position: absolute; top: 0; left: 0;
+			width: 100%; height: 100%; margin: 0;
+			display: flex; justify-content: center;
+		}
+		#Ctrl_TimerDashboardCurrentTime {
+			width: 310px; height: 80px; margin: 0;
+		}
+		#CtrlGroup_TimerDashboardCurrentTime .Ctrl {
+			position: relative;
+			width: 40px; height: 80px;
+		}
+		.ScrollingNumber {
+			position: absolute; left: 0;
+			width: 100%; height: 100%;
+			transition: none !important;
+		}
+		#ScrollingNumber_Timer1 {
+			top: calc(-60px * 9);
+		}
+		#ScrollingNumber_Timer2 {
+			top: calc(-60px * 11);
+		}
+		#ScrollingNumber_Timer3 {
+			top: calc(-60px * 11);
+		}
+		#ScrollingNumber_Timer4 {
+			top: calc(-60px * 7);
+		}
+		#ScrollingNumber_Timer5 {
+			top: calc(20px - 40px * 11);
+		}
+		.ScrollingNumber p {
+			width: 100%; height: 40px; padding: 0; margin: 20px 0;
+			font-size: 40px;
+			display: flex; justify-content: center; align-items: center;
+		}
+		#ScrollingNumber_Timer5 p {
+			margin: 0;
+		}
+		#Timer #Ctrl_TimerDashboardCurrentTimeSeparator {
+			width: 10px;
+			display: flex; flex-direction: column; justify-content: center; align-items: center;
+		}
+		#Timer #Ctrl_TimerDashboardCurrentTimeSeparator .TimeSeparator {
+			width: 8px; height: 8px; border-radius: 4px; margin: 5px 0;
+			background-color: #000000;
+		}
+		#Timer #Ctrl_TimerDashboardCurrentTimeMillisec {
+			width: 30px;
+			display: flex; align-items: center;
+		}
 
-        /* Manipulation */
-        #Timer #Ctrl_TimerCtrlStart, #Timer #Ctrl_TimerCtrlLap, #Timer #Ctrl_TimerCtrlReset {
-            width: 80px; margin: 0 10px 10px 0;
-        }
-        #Timer #Ctrl_TimerCtrlStart {
-            width: 120px;
-        }
-        #Timer #Ctrl_TimerCtrlLapRecorder {
-            height: auto;
-        }
-        #Timer #Item_TimerOptions .Textbox {
-            width: 80px;
-        }
-        #Timer #Item_TimerPresets .Ctrl {
-            width: 80px; margin: 0 10px 10px 0;
-            display: flex; justify-content: center; align-items: center;
-        }
+		/* Manipulation */
+		#Timer #Ctrl_TimerCtrlStart, #Timer #Ctrl_TimerCtrlLap, #Timer #Ctrl_TimerCtrlReset {
+			width: 80px; margin: 0 10px 10px 0;
+		}
+		#Timer #Ctrl_TimerCtrlStart {
+			width: 120px;
+		}
+		#Timer #Ctrl_TimerCtrlLapRecorder {
+			height: auto;
+		}
+		#Timer #Item_TimerOptions .Textbox {
+			width: 80px;
+		}
+		#Timer #Item_TimerPresets .Ctrl {
+			width: 80px; margin: 0 10px 10px 0;
+			display: flex; justify-content: center; align-items: center;
+		}
 
-    /* Lottery */
-        /* Dashboard */
-        #CtrlGroup_LotteryDashboard {
-            margin: 0 -5px 20px -5px;
-            justify-content: center; align-items: center;
-        }
-        #CtrlGroup_LotteryDashboard .Ctrl {
-            margin: 0 5px 10px 5px;
-            display: flex; justify-content: center; align-items: center;
-        }
-        .Ctrl_LotteryDashboardLargeNumber {
-            width: 200px; height: 120px;
-        }
-        .Ctrl_LotteryDashboardSmallNumber {
-            width: 100px; height: 60px;
-        }
-        .Ctrl_LotteryDashboardLargeNumber p {
-            font-size: 48px;
-        }
-        .Ctrl_LotteryDashboardSmallNumber p {
-            font-size: 24px;
-        }
+	/* Lottery */
+		/* Dashboard */
+		#CtrlGroup_LotteryDashboard {
+			margin: 0 -5px 20px -5px;
+			justify-content: center; align-items: center;
+		}
+		#CtrlGroup_LotteryDashboard .Ctrl {
+			margin: 0 5px 10px 5px;
+			display: flex; justify-content: center; align-items: center;
+		}
+		.Ctrl_LotteryDashboardLargeNumber {
+			width: 200px; height: 120px;
+		}
+		.Ctrl_LotteryDashboardSmallNumber {
+			width: 100px; height: 60px;
+		}
+		.Ctrl_LotteryDashboardLargeNumber p {
+			font-size: 48px;
+		}
+		.Ctrl_LotteryDashboardSmallNumber p {
+			font-size: 24px;
+		}
 
-        /* Manipulation */
-        #Lottery #Item_LotteryCtrl .Ctrl {
-            width: 120px; margin: 0 10px 10px 0;
-        }
-        #Lottery .Item .Textbox {
-            width: 80px;
-        }
+		/* Manipulation */
+		#Lottery #Item_LotteryCtrl .Ctrl {
+			width: 120px; margin: 0 10px 10px 0;
+		}
+		#Lottery .Item .Textbox {
+			width: 80px;
+		}
 
 /* Responsive Web Design */
 @media (max-width: 1150px) {
-    .Title {
-        width: 40px;
-    }
-    nav ul {
-        width: calc(100% - 70px);
-    }
-    .SectionTitle {
-        padding: calc(60px + 40px) 0 40px 0;
-    }
-    #CtrlGroup_TimerDashboard {
-        height: 320px;
-    }
-    #Ctrl_TimerDashboardStartTime {
-        top: 60px;
-    }
-    #Ctrl_TimerDashboardEndTime {
-        bottom: 60px;
-    }
-    #Ctrl_TimerDashboardCurrentTime {
-        width: 250px;
-    }
-    #CtrlGroup_TimerDashboardCurrentTime .Ctrl {
-        width: 30px;
-    }
-    .Ctrl_LotteryDashboardLargeNumber {
-        width: 150px; height: 90px;
-    }
-    .Ctrl_LotteryDashboardSmallNumber {
-        width: 75px; height: 45px;
-    }
-    .Ctrl_LotteryDashboardLargeNumber p {
-        font-size: 36px;
-    }
-    .Ctrl_LotteryDashboardSmallNumber p {
-        font-size: 16px;
-    }
+	.Title {
+		width: 40px;
+	}
+	nav ul {
+		width: calc(100% - 70px);
+	}
+	.SectionTitle {
+		padding: calc(60px + 40px) 0 40px 0;
+	}
+	#CtrlGroup_TimerDashboard {
+		height: 320px;
+	}
+	#Ctrl_TimerDashboardStartTime {
+		top: 60px;
+	}
+	#Ctrl_TimerDashboardEndTime {
+		bottom: 60px;
+	}
+	#Ctrl_TimerDashboardCurrentTime {
+		width: 250px;
+	}
+	#CtrlGroup_TimerDashboardCurrentTime .Ctrl {
+		width: 30px;
+	}
+	.Ctrl_LotteryDashboardLargeNumber {
+		width: 150px; height: 90px;
+	}
+	.Ctrl_LotteryDashboardSmallNumber {
+		width: 75px; height: 45px;
+	}
+	.Ctrl_LotteryDashboardLargeNumber p {
+		font-size: 36px;
+	}
+	.Ctrl_LotteryDashboardSmallNumber p {
+		font-size: 16px;
+	}
 }

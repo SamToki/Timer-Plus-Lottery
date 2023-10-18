@@ -1,9 +1,9 @@
 /* For SamToki.github.io/Timer+Lottery */
-    /* This is a theme variant, so only colors along with few things are configured. */
+	/* This is a theme variant, so only colors along with few things are configured. */
 
 /* Main */
-    /* Timer */
-        /* Dashboard */
-        #Timer #Ctrl_TimerDashboardCurrentTimeSeparator .TimeSeparator {
-            background-color: #EEE4D9;
-        }
+	/* Timer */
+		/* Dashboard */
+		#Timer #Ctrl_TimerDashboardCurrentTimeSeparator .TimeSeparator {
+			background-color: #EEE4D9;
+		}
