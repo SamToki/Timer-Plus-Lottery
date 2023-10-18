@@ -32,7 +32,11 @@
 
     // Load Configuration
     window.onload = function() {
-        if(localStorage.System) {System = JSON.parse(localStorage.getItem("System"));}
+        if(localStorage.System) {
+			System = JSON.parse(localStorage.getItem("System"));
+		} else {
+			System.I18n.Language = "zh-CN";
+		}
         switch(System.I18n.Language) {
             case "zh-CN":
                 // window.location.replace("index.html");
@@ -60,9 +64,13 @@
                 break;
         }
         RefreshSystem();
-        if(localStorage.TimerPlusLottery_Timer) {Timer = JSON.parse(localStorage.getItem("TimerPlusLottery_Timer"));}
+        if(localStorage.TimerPlusLottery_Timer) {
+			Timer = JSON.parse(localStorage.getItem("TimerPlusLottery_Timer"));
+		}
         RefreshTimer();
-        if(localStorage.TimerPlusLottery_Lottery) {Lottery = JSON.parse(localStorage.getItem("TimerPlusLottery_Lottery"));}
+        if(localStorage.TimerPlusLottery_Lottery) {
+			Lottery = JSON.parse(localStorage.getItem("TimerPlusLottery_Lottery"));
+		}
         RefreshLottery();
     };
 
@@ -590,6 +598,12 @@
             }
             RefreshSystem();
         }
+        function SetDevClearLocalStorage() {
+        	PopupDialogAppear("System_ConfirmClearLocalStorage",
+        		"Caution",
+        		"您确认要清空 Local Storage？",
+        		"清空", "取消", "");
+        }
     
     // Popup Dialog Answer
     function PopupDialogAnswer(Selector) {
@@ -598,6 +612,18 @@
                 switch(Selector) {
                     case 1:
                         break;
+                    default:
+                        alert("【系统错误】\n函数「PopupDialogAnswer」的参数「Selector」为意料之外的值。\n请通过「帮助」版块中的链接向我提供反馈以帮助解决此问题，谢谢！");
+                        break;
+                }
+                break;
+            case "System_ConfirmClearLocalStorage":
+                switch(Selector) {
+                    case 1:
+                    	ClearLocalStorage();
+                        break;
+                    case 2:
+                    	break;
                     default:
                         alert("【系统错误】\n函数「PopupDialogAnswer」的参数「Selector」为意料之外的值。\n请通过「帮助」版块中的链接向我提供反馈以帮助解决此问题，谢谢！");
                         break;
