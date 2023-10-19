@@ -11,7 +11,7 @@
 		
 		// Saved
 		var Timer = {
-			Length: 300000, Preset: [0, 300000, 900000, 3600000],
+			Duration: 300000, Preset: [0, 300000, 900000, 3600000],
 			UseCountdown: true,
 			IsRunning: false, IsPaused: false,
 			ClockTime: 0, StartTime: 0, EndTime: 0,
@@ -178,20 +178,20 @@
 			if(Timer.UseCountdown == true) {
 				Timer.CurrentTime = Timer.EndTime - Timer.ClockTime;
 			} else {
-				Timer.CurrentTime = Timer.Length - (Timer.EndTime - Timer.ClockTime);
+				Timer.CurrentTime = Timer.Duration - (Timer.EndTime - Timer.ClockTime);
 			}
 
 			// Clock Time & Start Time & End Time
 			Timer.ClockTime = Date.now() - new Date().getTimezoneOffset() * 60000;
 			if(Timer.IsRunning == false && Timer.IsPaused == false) {
 				Timer.StartTime = Timer.ClockTime;
-				Timer.EndTime = Timer.ClockTime + Timer.Length;
+				Timer.EndTime = Timer.ClockTime + Timer.Duration;
 			}
 			if(Timer.IsRunning == true && Timer.IsPaused == true) {
 				if(Timer.UseCountdown == true) {
 					Timer.EndTime = Timer.ClockTime + Timer.CurrentTime;
 				} else {
-					Timer.EndTime = Timer.ClockTime + (Timer.Length - Timer.CurrentTime);
+					Timer.EndTime = Timer.ClockTime + (Timer.Duration - Timer.CurrentTime);
 				}
 			}
 
@@ -199,7 +199,7 @@
 			if(Timer.UseCountdown == true) {
 				Timer.CurrentTime = Timer.EndTime - Timer.ClockTime;
 			} else {
-				Timer.CurrentTime = Timer.Length - (Timer.EndTime - Timer.ClockTime);
+				Timer.CurrentTime = Timer.Duration - (Timer.EndTime - Timer.ClockTime);
 			}
 
 		// Dashboard
@@ -208,7 +208,7 @@
 			ChangeText("Label_TimerDashboardEndTime", Math.floor(Timer.EndTime % 86400000 / 3600000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + ":" + Math.floor(Timer.EndTime % 3600000 / 60000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + ":" + Math.floor(Timer.EndTime % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}));
 
 			// Progring & Needle
-			Percentage = Timer.CurrentTime / Timer.Length * 100;
+			Percentage = Timer.CurrentTime / Timer.Duration * 100;
 			ChangeProgring("ProgringFg_Timer", 917.35 * (100 - Percentage) / 100);
 			ChangeRotate("Needle_Timer", Timer.CurrentTime / 60000 * 360);
 
@@ -240,7 +240,7 @@
 				"Completion",
 				"计时完成！<br />" +
 				"从 " + ReadText("Label_TimerDashboardStartTime") + " 至 " + ReadText("Label_TimerDashboardEndTime") + "。<br />" +
-				"设定时长 " + Math.floor(Timer.Length / 60000) + "分" + Math.floor(Timer.Length % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "秒，实际时长 " + Math.floor((Timer.EndTime - Timer.StartTime) / 60000) + "分" + Math.floor((Timer.EndTime - Timer.StartTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "秒。",
+				"设定时长 " + Math.floor(Timer.Duration / 60000) + "分" + Math.floor(Timer.Duration % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "秒，实际时长 " + Math.floor((Timer.EndTime - Timer.StartTime) / 60000) + "分" + Math.floor((Timer.EndTime - Timer.StartTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "秒。",
 				"确定", "", "");
 			if(System.Sound.PlaySound == true) {AudioPlay("Audio_SoundRingtone");}
 			TimerReset();
@@ -264,8 +264,8 @@
 		}
 
 		// Options
-		ChangeValue("Textbox_TimerOptionsMin", Math.floor(Timer.Length / 60000));
-		ChangeValue("Textbox_TimerOptionsSec", Math.floor(Timer.Length % 60000 / 1000));
+		ChangeValue("Textbox_TimerOptionsMin", Math.floor(Timer.Duration / 60000));
+		ChangeValue("Textbox_TimerOptionsSec", Math.floor(Timer.Duration % 60000 / 1000));
 		ChangeChecked("Checkbox_TimerOptionsCountdown", Timer.UseCountdown);
 
 		// Presets
@@ -405,7 +405,7 @@
 				ChangeText("Label_TimerCtrlLapRecorder",
 					"#" + Timer.Lap.Sequence +
 					"　+" + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) / 60000) + ":" + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
-					"　" + Math.floor((Timer.Length - Timer.CurrentTime) / 60000) + ":" + Math.floor((Timer.Length - Timer.CurrentTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Length - Timer.CurrentTime) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "<br />" +
+					"　" + Math.floor((Timer.Duration - Timer.CurrentTime) / 60000) + ":" + Math.floor((Timer.Duration - Timer.CurrentTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Duration - Timer.CurrentTime) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "<br />" +
 					ReadText("Label_TimerCtrlLapRecorder"));
 			} else {
 				ChangeText("Label_TimerCtrlLapRecorder",
@@ -421,7 +421,7 @@
 			Timer.IsRunning = false; Timer.IsPaused = false;
 			Timer.Lap.Sequence = 1;
 			if(Timer.UseCountdown == true) {
-				Timer.Lap.PreviousCurrentTime = Timer.Length;
+				Timer.Lap.PreviousCurrentTime = Timer.Duration;
 			} else {
 				Timer.Lap.PreviousCurrentTime = 0;
 			}
@@ -430,13 +430,13 @@
 		}
 
 		// Options
-		function SetTimerLength() {
-			Timer.Length = parseInt(Number(ReadValue("Textbox_TimerOptionsMin"))) * 60000 + parseInt(Number(ReadValue("Textbox_TimerOptionsSec"))) * 1000; // Use parseInt(Number()) to force convert value to integer.
-			if(Timer.Length < 1000) {
-				Timer.Length = 1000;
+		function SetTimerDuration() {
+			Timer.Duration = parseInt(Number(ReadValue("Textbox_TimerOptionsMin"))) * 60000 + parseInt(Number(ReadValue("Textbox_TimerOptionsSec"))) * 1000; // Use parseInt(Number()) to force convert value to integer.
+			if(Timer.Duration < 1000) {
+				Timer.Duration = 1000;
 			}
-			if(Timer.Length > 59999000) {
-				Timer.Length = 59999000;
+			if(Timer.Duration > 59999000) {
+				Timer.Duration = 59999000;
 			}
 			RefreshTimer();
 		}
@@ -446,18 +446,18 @@
 			} else {
 				Timer.UseCountdown = false;
 			}
-			Timer.Lap.PreviousCurrentTime = Timer.Length - Timer.Lap.PreviousCurrentTime;
+			Timer.Lap.PreviousCurrentTime = Timer.Duration - Timer.Lap.PreviousCurrentTime;
 			RefreshTimer();
 		}
 
 		// Presets
 		function TimerPresetStart(Selector) {
-			Timer.Length = Timer.Preset[Selector];
+			Timer.Duration = Timer.Preset[Selector];
 			TimerReset();
 			TimerStart();
 		}
 		function TimerPresetReplace(Selector) {
-			Timer.Preset[Selector] = Timer.Length;
+			Timer.Preset[Selector] = Timer.Duration;
 			RefreshTimer();
 		}
 	

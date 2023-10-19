@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="Timer+Lottery，计时与摇号工具。计时器支持倒计时与正计时，以及秒表计圈功能，精确至.01秒；摇号器支持骰子与扑克牌模式。" />
 		<meta name="keywords" content="Sam Toki, SAM TOKI STUDIO, 计时器, 摇号器, Timer+Lottery" />
-		<meta name="version" content="v1.00 (2023/10/17). Since 2023/09/27." />
+		<meta name="version" content="v1.01 (2023/10/19). Since 2023/09/27." />
 		<meta name="author" content="Sam Toki" />
 		<meta name="copyright" content="(C) 2015-2023 SAM TOKI STUDIO" />
 		<title>Timer+Lottery</title>
@@ -154,9 +154,9 @@
 								<li class="Ctrl">
 									<label for="Textbox_TimerOptionsMin">
 										<span>时长：</span>
-										<input class="Textbox" id="Textbox_TimerOptionsMin" type="number" min="0" max="999" step="1" value="5" placeholder="0~999" onclick="document.getElementById('Textbox_TimerOptionsMin').select()" onchange="SetTimerLength()" />
+										<input class="Textbox" id="Textbox_TimerOptionsMin" type="number" min="0" max="999" step="1" value="5" placeholder="0~999" onclick="document.getElementById('Textbox_TimerOptionsMin').select()" onchange="SetTimerDuration()" />
 										<span>分</span>
-										<input class="Textbox" id="Textbox_TimerOptionsSec" type="number" min="-1" max="60" step="1" value="0" placeholder="0~59" onclick="document.getElementById('Textbox_TimerOptionsSec').select()" onchange="SetTimerLength()" />
+										<input class="Textbox" id="Textbox_TimerOptionsSec" type="number" min="-1" max="60" step="1" value="0" placeholder="0~59" onclick="document.getElementById('Textbox_TimerOptionsSec').select()" onchange="SetTimerDuration()" />
 										<span>秒</span>
 									</label>
 								</li>
@@ -396,7 +396,7 @@
 						<fieldset>
 							<legend>关于</legend>
 							<p>Timer+Lottery</p>
-							<p>版本 v1.00 (<time datetime="2023-10-17" pubdate="pubdate">2023/10/17</time>)<br />始于 2023/09/27</p>
+							<p>版本 v1.01 (<time datetime="2023-10-19" pubdate="pubdate">2023/10/19</time>)<br />始于 2023/09/27</p>
 							<p><a href="https://github.com/SamToki/Web---Timer-Plus-Lottery">GitHub 项目</a></p>
 						</fieldset>
 					</li>
