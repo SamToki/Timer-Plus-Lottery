@@ -15,9 +15,6 @@ nav li {
 }
 
 /* Main */
-.SectionTitle {
-	padding: calc(80px + 40px) 0 40px 0;
-}
 	/* Timer */
 		/* Dashboard */
 		#CtrlGroup_TimerDashboard {
@@ -166,9 +163,6 @@ nav li {
 	}
 	nav ul {
 		width: calc(100% - 70px);
-	}
-	.SectionTitle {
-		padding: calc(60px + 40px) 0 40px 0;
 	}
 	#CtrlGroup_TimerDashboard {
 		height: 320px;
