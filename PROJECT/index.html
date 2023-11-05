@@ -173,15 +173,15 @@
 						<fieldset>
 							<legend>预设</legend>
 							<ul class="CtrlGroup" id="CtrlGroup_TimerPresets">
-								<li class="Ctrl"><span id="Label_TimerPreset1">预设1</span></li>
-								<li class="Ctrl"><button class="Cmdbtn" id="Cmdbtn_TimerPreset1Start" onclick="TimerPresetStart(1)">开始</button></li>
-								<li class="Ctrl"><button class="Cmdbtn" id="Cmdbtn_TimerPreset1Replace" onclick="TimerPresetReplace(1)">替换</button></li>
-								<li class="Ctrl"><span id="Label_TimerPreset2">预设2</span></li>
-								<li class="Ctrl"><button class="Cmdbtn" id="Cmdbtn_TimerPreset2Start" onclick="TimerPresetStart(2)">开始</button></li>
-								<li class="Ctrl"><button class="Cmdbtn" id="Cmdbtn_TimerPreset2Replace" onclick="TimerPresetReplace(2)">替换</button></li>
-								<li class="Ctrl"><span id="Label_TimerPreset3">预设3</span></li>
-								<li class="Ctrl"><button class="Cmdbtn" id="Cmdbtn_TimerPreset3Start" onclick="TimerPresetStart(3)">开始</button></li>
-								<li class="Ctrl"><button class="Cmdbtn" id="Cmdbtn_TimerPreset3Replace" onclick="TimerPresetReplace(3)">替换</button></li>
+								<li class="Ctrl" id="Ctrl_TimerPreset1"><span id="Label_TimerPreset1">预设1</span></li>
+								<li class="Ctrl" id="Ctrl_TimerPreset1Start"><button class="Cmdbtn" id="Cmdbtn_TimerPreset1Start" onclick="TimerPresetStart(1)">开始</button></li>
+								<li class="Ctrl" id="Ctrl_TimerPreset1Replace"><button class="Cmdbtn" id="Cmdbtn_TimerPreset1Replace" onclick="TimerPresetReplace(1)">替换</button></li>
+								<li class="Ctrl" id="Ctrl_TimerPreset2"><span id="Label_TimerPreset2">预设2</span></li>
+								<li class="Ctrl" id="Ctrl_TimerPreset2Start"><button class="Cmdbtn" id="Cmdbtn_TimerPreset2Start" onclick="TimerPresetStart(2)">开始</button></li>
+								<li class="Ctrl" id="Ctrl_TimerPreset2Replace"><button class="Cmdbtn" id="Cmdbtn_TimerPreset2Replace" onclick="TimerPresetReplace(2)">替换</button></li>
+								<li class="Ctrl" id="Ctrl_TimerPreset3"><span id="Label_TimerPreset3">预设3</span></li>
+								<li class="Ctrl" id="Ctrl_TimerPreset3Start"><button class="Cmdbtn" id="Cmdbtn_TimerPreset3Start" onclick="TimerPresetStart(3)">开始</button></li>
+								<li class="Ctrl" id="Ctrl_TimerPreset3Replace"><button class="Cmdbtn" id="Cmdbtn_TimerPreset3Replace" onclick="TimerPresetReplace(3)">替换</button></li>
 							</ul>
 						</fieldset>
 					</li>
@@ -208,8 +208,8 @@
 						<fieldset>
 							<legend>控制</legend>
 							<ul class="CtrlGroup" id="CtrlGroup_LotteryCtrl">
-								<li class="Ctrl"><button class="Cmdbtn" id="Cmdbtn_LotteryCtrlRoll" onclick="LotteryRoll()">摇号</button></li>
-								<li class="Ctrl"><button class="Cmdbtn" id="Cmdbtn_LotteryCtrlReset" onclick="LotteryReset()">重置</button></li>
+								<li class="Ctrl" id="Ctrl_LotteryCtrlRoll"><button class="Cmdbtn" id="Cmdbtn_LotteryCtrlRoll" onclick="LotteryRoll()">摇号</button></li>
+								<li class="Ctrl" id="Ctrl_LotteryCtrlReset"><button class="Cmdbtn" id="Cmdbtn_LotteryCtrlReset" onclick="LotteryReset()">重置</button></li>
 							</ul>
 						</fieldset>
 					</li>
@@ -327,7 +327,7 @@
 					<li class="Item" id="Item_SettingsDev">
 						<fieldset>
 							<legend>开发者选项</legend>
-							<ul class="CtrlGroup">
+							<ul class="CtrlGroup" id="CtrlGroup_SettingsDev">
 								<li class="Ctrl">
 									<label for="Checkbox_SettingsDevShowAllBorders">
 										<input class="Checkbox" id="Checkbox_SettingsDevShowAllBorders" type="checkbox" checked="false" onchange="SetDevShowAllBorders()" />
@@ -340,6 +340,12 @@
 										<span>使用 ja-JP 旧字形</span>
 									</label>
 								</li>
+								<li class="Ctrl">
+									<label for="Textbox_SettingsDevFont">
+										<span>字体：</span>
+										<input class="Textbox" id="Textbox_SettingsDevFont" type="text" placeholder="" onchange="SetDevFont()" />
+									</label>
+								</li>
 							</ul>
 						</fieldset>
 					</li>
@@ -350,10 +356,10 @@
 								<li class="Ctrl">
 									<label for="Textbox_SettingsUserDataImport">
 										<span>导入：</span>
-										<input class="Textbox" id="Textbox_SettingsUserDataImport" type="text" placeholder="粘贴格式正确的 JSON 字符串" onclick="document.getElementById('Textbox_SettingsUserDataImport').select()" onchange="SetUserDataImport()" />
+										<input class="Textbox" id="Textbox_SettingsUserDataImport" type="text" placeholder="粘贴 JSON 字符串" onclick="document.getElementById('Textbox_SettingsUserDataImport').select()" onchange="SetUserDataImport()" />
 									</label>
 								</li>
-								<li class="Ctrl" id="Ctrl_SettingsUserDataExport"><button class="Cmdbtn" id="Cmdbtn_SettingsUserDataExport" onclick="SetUserDataExport()">导出至剪贴板</button></li>
+								<li class="Ctrl" id="Ctrl_SettingsUserDataExport"><button class="Cmdbtn" id="Cmdbtn_SettingsUserDataExport" onclick="SetUserDataExport()">导出</button></li>
 								<li class="Ctrl" id="Ctrl_SettingsUserDataClear"><button class="Cmdbtn" id="Cmdbtn_SettingsUserDataClear" onclick="SetUserDataClear()">清空</button></li>
 							</ul>
 						</fieldset>

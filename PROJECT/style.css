@@ -97,21 +97,32 @@ nav li {
 		}
 
 		/* Manipulation */
-		#Timer #Ctrl_TimerCtrlStart, #Timer #Ctrl_TimerCtrlLap, #Timer #Ctrl_TimerCtrlReset {
-			width: 80px; margin: 0 10px 10px 0;
-		}
 		#Timer #Ctrl_TimerCtrlStart {
-			width: 120px;
+			width: calc((100% - 20px) * 0.4); margin: 0 10px 10px 0;
+		}
+		#Timer #Ctrl_TimerCtrlLap {
+			width: calc((100% - 20px) * 0.3); margin: 0 10px 10px 0;
+		}
+		#Timer #Ctrl_TimerCtrlReset {
+			width: calc((100% - 20px) * 0.3); margin: 0 0 10px 0;
 		}
 		#Timer #Ctrl_TimerCtrlLapRecorder {
 			height: auto;
 		}
-		#Timer #Item_TimerOptions .Textbox {
+		#Timer #CtrlGroup_TimerOptions .Textbox {
 			width: 80px;
 		}
-		#Timer #Item_TimerPresets .Ctrl {
-			width: 80px; margin: 0 10px 10px 0;
+		#Timer #CtrlGroup_TimerPresets .Ctrl {
 			display: flex; justify-content: center; align-items: center;
+		}
+		#Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset1, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset2, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset3 {
+			width: calc((100% - 20px) * 0.3); margin: 0 10px 10px 0;
+		}
+		#Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset1Start, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset2Start, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset3Start {
+			width: calc((100% - 20px) * 0.4); margin: 0 10px 10px 0;
+		}
+		#Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset1Replace, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset2Replace, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset3Replace {
+			width: calc((100% - 20px) * 0.3); margin: 0 0 10px 0;
 		}
 
 	/* Lottery */
@@ -138,10 +149,13 @@ nav li {
 		}
 
 		/* Manipulation */
-		#Lottery #Item_LotteryCtrl .Ctrl {
-			width: 120px; margin: 0 10px 10px 0;
+		#Lottery #CtrlGroup_LotteryCtrl #Ctrl_LotteryCtrlRoll {
+			width: calc((100% - 10px) * 0.7); margin: 0 10px 10px 0;
 		}
-		#Lottery .Item .Textbox {
+		#Lottery #CtrlGroup_LotteryCtrl #Ctrl_LotteryCtrlReset {
+			width: calc((100% - 10px) * 0.3); margin: 0 0 10px 0;
+		}
+		#Lottery #CtrlGroup_LotteryOptions .Textbox {
 			width: 80px;
 		}
 
