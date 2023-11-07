@@ -10,7 +10,7 @@
 nav {
 	width: 600px;
 }
-nav li {
+nav .Ctrl {
 	width: calc(100% / 5);
 }
 
@@ -24,28 +24,28 @@ nav li {
 		}
 		#Ctrl_TimerDashboardStartTime {
 			position: absolute; top: 100px; left: calc(50% - 80px);
-			width: 160px; height: 40px; margin: 0;
+			width: 160px; height: 40px;
 			display: flex; justify-content: center; align-items: center;
 		}
 		#Ctrl_TimerDashboardEndTime {
 			position: absolute; bottom: 100px; left: calc(50% - 80px);
-			width: 160px; height: 40px; margin: 0;
+			width: 160px; height: 40px;
 			display: flex; justify-content: center; align-items: center;
 		}
 		#Ctrl_TimerDashboardProgring {
 			position: absolute; top: 0;
-			width: 100%; height: 100%; margin: 0;
+			width: 100%; height: 100%;
 		}
 		#Ctrl_TimerDashboardProgring .ProgringFg {
 			stroke-dasharray: 917.35 917.35; stroke-dashoffset: 458.67;
 		}
 		#Ctrl_TimerDashboardNeedle {
 			position: absolute; top: 0; left: 0;
-			width: 100%; height: 100%; margin: 0;
+			width: 100%; height: 100%;
 			display: flex; justify-content: center;
 		}
 		#Ctrl_TimerDashboardCurrentTime {
-			width: 310px; height: 80px; margin: 0;
+			width: 310px; height: 80px;
 		}
 		#CtrlGroup_TimerDashboardCurrentTime .Ctrl {
 			width: 40px; height: 80px;
@@ -87,19 +87,15 @@ nav li {
 			background-color: #000000;
 		}
 		#Timer #Ctrl_TimerDashboardCurrentTimeMillisec {
-			width: 30px;
 			display: flex; align-items: center;
 		}
 
 		/* Manipulation */
 		#Timer #Ctrl_TimerCtrlStart {
-			width: calc((100% - 20px) * 0.4); margin: 0 10px 10px 0;
+			width: calc((100% - 20px) * 0.4);
 		}
-		#Timer #Ctrl_TimerCtrlLap {
-			width: calc((100% - 20px) * 0.3); margin: 0 10px 10px 0;
-		}
-		#Timer #Ctrl_TimerCtrlReset {
-			width: calc((100% - 20px) * 0.3); margin: 0 0 10px 0;
+		#Timer #Ctrl_TimerCtrlLap, #Timer #Ctrl_TimerCtrlReset {
+			width: calc((100% - 20px) * 0.3);
 		}
 		#Timer #Ctrl_TimerCtrlLapRecorder {
 			height: auto;
@@ -110,14 +106,11 @@ nav li {
 		#Timer #CtrlGroup_TimerPresets .Ctrl {
 			display: flex; justify-content: center; align-items: center;
 		}
-		#Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset1, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset2, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset3 {
-			width: calc((100% - 20px) * 0.3); margin: 0 10px 10px 0;
+		#Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset1, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset2, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset3, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset1Replace, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset2Replace, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset3Replace {
+			width: calc((100% - 20px) * 0.3);
 		}
 		#Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset1Start, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset2Start, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset3Start {
-			width: calc((100% - 20px) * 0.4); margin: 0 10px 10px 0;
-		}
-		#Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset1Replace, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset2Replace, #Timer #CtrlGroup_TimerPresets #Ctrl_TimerPreset3Replace {
-			width: calc((100% - 20px) * 0.3); margin: 0 0 10px 0;
+			width: calc((100% - 20px) * 0.4);
 		}
 
 	/* Lottery */
@@ -145,10 +138,10 @@ nav li {
 
 		/* Manipulation */
 		#Lottery #CtrlGroup_LotteryCtrl #Ctrl_LotteryCtrlRoll {
-			width: calc((100% - 10px) * 0.7); margin: 0 10px 10px 0;
+			width: calc((100% - 10px) * 0.7);
 		}
 		#Lottery #CtrlGroup_LotteryCtrl #Ctrl_LotteryCtrlReset {
-			width: calc((100% - 10px) * 0.3); margin: 0 0 10px 0;
+			width: calc((100% - 10px) * 0.3);
 		}
 		#Lottery #CtrlGroup_LotteryOptions .Textbox {
 			width: 80px;
