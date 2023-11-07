@@ -7,7 +7,7 @@
 .Title a {
 	background-image: url(images/Title.png);
 }
-nav ul {
+nav {
 	width: 600px;
 }
 nav li {
@@ -159,7 +159,7 @@ nav li {
 	.Title {
 		width: 40px;
 	}
-	nav ul {
+	nav {
 		width: calc(100% - 70px);
 	}
 	#CtrlGroup_TimerDashboard {
