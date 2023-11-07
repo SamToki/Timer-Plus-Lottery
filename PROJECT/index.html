@@ -129,7 +129,8 @@
 								</div>
 							</li>
 							<li class="Ctrl" id="Ctrl_TimerDashboardCurrentTimeMillisec">
-								<p id="Label_TimerDashboardCurrentTimeMillisec">.01<br />秒</p>
+								<p id="Label_TimerDashboardCurrentTimeMillisec">.01<br />
+									秒</p>
 							</li>
 						</ul>
 					</li>
@@ -140,10 +141,18 @@
 						<fieldset>
 							<legend>控制</legend>
 							<ul class="CtrlGroup" id="CtrlGroup_TimerCtrl">
-								<li class="Ctrl" id="Ctrl_TimerCtrlStart"><button class="Cmdbtn" id="Cmdbtn_TimerCtrlStart" onclick="TimerStart()">开始</button></li>
-								<li class="Ctrl" id="Ctrl_TimerCtrlLap"><button class="Cmdbtn" id="Cmdbtn_TimerCtrlLap" onclick="TimerLap()">计圈</button></li>
-								<li class="Ctrl" id="Ctrl_TimerCtrlReset"><button class="Cmdbtn" id="Cmdbtn_TimerCtrlReset" onclick="TimerReset()">重置</button></li>
-								<li class="Ctrl" id="Ctrl_TimerCtrlLapRecorder"><p id="Label_TimerCtrlLapRecorder"></p></li>
+								<li class="Ctrl" id="Ctrl_TimerCtrlStart">
+									<button class="Cmdbtn" id="Cmdbtn_TimerCtrlStart" onclick="TimerStart()">开始</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerCtrlLap">
+									<button class="Cmdbtn" id="Cmdbtn_TimerCtrlLap" onclick="TimerLap()">计圈</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerCtrlReset">
+									<button class="Cmdbtn" id="Cmdbtn_TimerCtrlReset" onclick="TimerReset()">重置</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerCtrlLapRecorder">
+									<p id="Label_TimerCtrlLapRecorder"></p>
+								</li>
 							</ul>
 						</fieldset>
 					</li>
@@ -173,15 +182,33 @@
 						<fieldset>
 							<legend>预设</legend>
 							<ul class="CtrlGroup" id="CtrlGroup_TimerPresets">
-								<li class="Ctrl" id="Ctrl_TimerPreset1"><span id="Label_TimerPreset1">预设1</span></li>
-								<li class="Ctrl" id="Ctrl_TimerPreset1Start"><button class="Cmdbtn" id="Cmdbtn_TimerPreset1Start" onclick="TimerPresetStart(1)">开始</button></li>
-								<li class="Ctrl" id="Ctrl_TimerPreset1Replace"><button class="Cmdbtn" id="Cmdbtn_TimerPreset1Replace" onclick="TimerPresetReplace(1)">替换</button></li>
-								<li class="Ctrl" id="Ctrl_TimerPreset2"><span id="Label_TimerPreset2">预设2</span></li>
-								<li class="Ctrl" id="Ctrl_TimerPreset2Start"><button class="Cmdbtn" id="Cmdbtn_TimerPreset2Start" onclick="TimerPresetStart(2)">开始</button></li>
-								<li class="Ctrl" id="Ctrl_TimerPreset2Replace"><button class="Cmdbtn" id="Cmdbtn_TimerPreset2Replace" onclick="TimerPresetReplace(2)">替换</button></li>
-								<li class="Ctrl" id="Ctrl_TimerPreset3"><span id="Label_TimerPreset3">预设3</span></li>
-								<li class="Ctrl" id="Ctrl_TimerPreset3Start"><button class="Cmdbtn" id="Cmdbtn_TimerPreset3Start" onclick="TimerPresetStart(3)">开始</button></li>
-								<li class="Ctrl" id="Ctrl_TimerPreset3Replace"><button class="Cmdbtn" id="Cmdbtn_TimerPreset3Replace" onclick="TimerPresetReplace(3)">替换</button></li>
+								<li class="Ctrl" id="Ctrl_TimerPreset1">
+									<span id="Label_TimerPreset1">预设1</span>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerPreset1Start">
+									<button class="Cmdbtn" id="Cmdbtn_TimerPreset1Start" onclick="TimerPresetStart(1)">开始</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerPreset1Replace">
+									<button class="Cmdbtn" id="Cmdbtn_TimerPreset1Replace" onclick="TimerPresetReplace(1)">替换</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerPreset2">
+									<span id="Label_TimerPreset2">预设2</span>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerPreset2Start">
+									<button class="Cmdbtn" id="Cmdbtn_TimerPreset2Start" onclick="TimerPresetStart(2)">开始</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerPreset2Replace">
+									<button class="Cmdbtn" id="Cmdbtn_TimerPreset2Replace" onclick="TimerPresetReplace(2)">替换</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerPreset3">
+									<span id="Label_TimerPreset3">预设3</span>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerPreset3Start">
+									<button class="Cmdbtn" id="Cmdbtn_TimerPreset3Start" onclick="TimerPresetStart(3)">开始</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_TimerPreset3Replace">
+									<button class="Cmdbtn" id="Cmdbtn_TimerPreset3Replace" onclick="TimerPresetReplace(3)">替换</button>
+								</li>
 							</ul>
 						</fieldset>
 					</li>
@@ -191,16 +218,36 @@
 			<section id="Lottery">
 				<h1 class="SectionTitle">摇号</h1>
 				<ul class="CtrlGroup" id="CtrlGroup_LotteryDashboard">
-					<li class="Ctrl Box Ctrl_LotteryDashboardLargeNumber"><p id="Label_LotteryDashboardNumber01">号码</p></li>
-					<li class="Ctrl Box Ctrl_LotteryDashboardLargeNumber"><p id="Label_LotteryDashboardNumber02">号码</p></li>
-					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber"><p id="Label_LotteryDashboardNumber03">号码</p></li>
-					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber"><p id="Label_LotteryDashboardNumber04">号码</p></li>
-					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber"><p id="Label_LotteryDashboardNumber05">号码</p></li>
-					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber"><p id="Label_LotteryDashboardNumber06">号码</p></li>
-					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber"><p id="Label_LotteryDashboardNumber07">号码</p></li>
-					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber"><p id="Label_LotteryDashboardNumber08">号码</p></li>
-					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber"><p id="Label_LotteryDashboardNumber09">号码</p></li>
-					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber"><p id="Label_LotteryDashboardNumber10">号码</p></li>
+					<li class="Ctrl Box Ctrl_LotteryDashboardLargeNumber">
+						<p id="Label_LotteryDashboardNumber01">号码</p>
+					</li>
+					<li class="Ctrl Box Ctrl_LotteryDashboardLargeNumber">
+						<p id="Label_LotteryDashboardNumber02">号码</p>
+					</li>
+					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
+						<p id="Label_LotteryDashboardNumber03">号码</p>
+					</li>
+					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
+						<p id="Label_LotteryDashboardNumber04">号码</p>
+					</li>
+					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
+						<p id="Label_LotteryDashboardNumber05">号码</p>
+					</li>
+					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
+						<p id="Label_LotteryDashboardNumber06">号码</p>
+					</li>
+					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
+						<p id="Label_LotteryDashboardNumber07">号码</p>
+					</li>
+					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
+						<p id="Label_LotteryDashboardNumber08">号码</p>
+					</li>
+					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
+						<p id="Label_LotteryDashboardNumber09">号码</p>
+					</li>
+					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
+						<p id="Label_LotteryDashboardNumber10">号码</p>
+					</li>
 				</ul>
 
 				<ul class="ItemGroup">
@@ -208,8 +255,12 @@
 						<fieldset>
 							<legend>控制</legend>
 							<ul class="CtrlGroup" id="CtrlGroup_LotteryCtrl">
-								<li class="Ctrl" id="Ctrl_LotteryCtrlRoll"><button class="Cmdbtn" id="Cmdbtn_LotteryCtrlRoll" onclick="LotteryRoll()">摇号</button></li>
-								<li class="Ctrl" id="Ctrl_LotteryCtrlReset"><button class="Cmdbtn" id="Cmdbtn_LotteryCtrlReset" onclick="LotteryReset()">重置</button></li>
+								<li class="Ctrl" id="Ctrl_LotteryCtrlRoll">
+									<button class="Cmdbtn" id="Cmdbtn_LotteryCtrlRoll" onclick="LotteryRoll()">摇号</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_LotteryCtrlReset">
+									<button class="Cmdbtn" id="Cmdbtn_LotteryCtrlReset" onclick="LotteryReset()">重置</button>
+								</li>
 							</ul>
 						</fieldset>
 					</li>
@@ -218,7 +269,8 @@
 							<legend>选项</legend>
 							<ul class="CtrlGroup" id="CtrlGroup_LotteryOptions">
 								<li class="Ctrl">
-									<label for="Combobox_LotteryOptionsMode"><span>模式：</span>
+									<label for="Combobox_LotteryOptionsMode">
+										<span>模式：</span>
 										<select class="Combobox" id="Combobox_LotteryOptionsMode" onchange="SetLotteryMode()">
 											<option value="Normal" selected>普通</option>
 											<option value="Dice">骰子</option>
@@ -254,7 +306,8 @@
 							<legend>显示</legend>
 							<ul class="CtrlGroup">
 								<li class="Ctrl">
-									<label for="Combobox_SettingsDisplayTheme"><span>主题：</span>
+									<label for="Combobox_SettingsDisplayTheme">
+										<span>主题：</span>
 										<select class="Combobox" id="Combobox_SettingsDisplayTheme" onchange="SetDisplayTheme()">
 											<option value="Auto" selected>自动</option>
 											<option value="Default">默认</option>
@@ -265,7 +318,8 @@
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Combobox_SettingsDisplayCursor"><span>鼠标指针：</span>
+									<label for="Combobox_SettingsDisplayCursor">
+										<span>鼠标指针：</span>
 										<select class="Combobox" id="Combobox_SettingsDisplayCursor" onchange="SetDisplayCursor()">
 											<option value="Default" selected>默认</option>
 											<option value="BTRAhoge">孤独摇滚！</option>
@@ -282,7 +336,8 @@
 									</label>
 								</li>
 								<li class="Ctrl">
-									<label for="Combobox_SettingsDisplayAnimSpeed"><span>动画速度：</span>
+									<label for="Combobox_SettingsDisplayAnimSpeed">
+										<span>动画速度：</span>
 										<select class="Combobox" id="Combobox_SettingsDisplayAnimSpeed" onchange="SetDisplayAnimSpeed()">
 											<option value="0.5s">慢 (0.5s)</option>
 											<option value="0.3s" selected>中 (0.3s)</option>
@@ -302,23 +357,6 @@
 									<label for="Checkbox_SettingsSoundPlaySound">
 										<input class="Checkbox" id="Checkbox_SettingsSoundPlaySound" type="checkbox" checked="true" onchange="SetSoundPlaySound()" />
 										<span>播放声音</span>
-									</label>
-								</li>
-							</ul>
-						</fieldset>
-					</li>
-					<li class="Item" id="Item_SettingsI18n">
-						<fieldset>
-							<legend>国际化</legend>
-							<ul class="CtrlGroup">
-								<li class="Ctrl">
-									<label for="Combobox_SettingsI18nLanguage"><span>语言 (Language)：</span>
-										<select class="Combobox" id="Combobox_SettingsI18nLanguage" onchange="SetI18nLanguage()">
-											<option value="zh-CN" selected>中文 (简体)</option>
-											<option value="en-US">English (US) [Not yet supported]</option>
-											<option value="ja-JP">日本語 [まだサポートされていません]</option>
-											<option value="zh-TW">中文 (繁體) [暫不支援]</option>
-										</select>
 									</label>
 								</li>
 							</ul>
@@ -359,8 +397,12 @@
 										<input class="Textbox" id="Textbox_SettingsUserDataImport" type="text" placeholder="粘贴 JSON 字符串" onclick="document.getElementById('Textbox_SettingsUserDataImport').select()" onchange="SetUserDataImport()" />
 									</label>
 								</li>
-								<li class="Ctrl" id="Ctrl_SettingsUserDataExport"><button class="Cmdbtn" id="Cmdbtn_SettingsUserDataExport" onclick="SetUserDataExport()">导出</button></li>
-								<li class="Ctrl" id="Ctrl_SettingsUserDataClear"><button class="Cmdbtn" id="Cmdbtn_SettingsUserDataClear" onclick="SetUserDataClear()">清空</button></li>
+								<li class="Ctrl" id="Ctrl_SettingsUserDataExport">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataExport" onclick="SetUserDataExport()">导出</button>
+								</li>
+								<li class="Ctrl" id="Ctrl_SettingsUserDataClear">
+									<button class="Cmdbtn" id="Cmdbtn_SettingsUserDataClear" onclick="SetUserDataClear()">清空</button>
+								</li>
 							</ul>
 						</fieldset>
 					</li>
@@ -402,8 +444,8 @@
 							<legend>Credits</legend>
 							<h4>图像</h4>
 							<p>背景插画：Pixiv ID <a href="https://pixiv.net/en/artworks/78892781">78892781</a><br />
-							背景插画主题：<a href="https://bgm.tv/subject/41658">ヤマノススメ</a><br />
-							背景插画会不定期更换。</p>
+								背景插画主题：<a href="https://bgm.tv/subject/41658">ヤマノススメ</a><br />
+								背景插画会不定期更换。</p>
 							<h4>图标</h4>
 							<p>UI图标：<a href="https://icons.getbootstrap.com">Bootstrap Icons</a></p>
 							<h4>音频</h4>
@@ -414,7 +456,8 @@
 						<fieldset>
 							<legend>关于</legend>
 							<p>Timer+Lottery</p>
-							<p>版本 v1.01 (<time datetime="2023-10-19" pubdate="pubdate">2023/10/19</time>)<br />始于 2023/09/27</p>
+							<p>版本 v1.01 (<time datetime="2023-10-19" pubdate="pubdate">2023/10/19</time>)<br />
+								始于 2023/09/27</p>
 							<p><a href="https://github.com/SamToki/Web---Timer-Plus-Lottery">查看 GitHub 项目</a></p>
 						</fieldset>
 					</li>
@@ -456,9 +499,15 @@
 					<li class="Ctrl" id="Ctrl_PopupDialogText">提示文字</li>
 				</ul>
 				<ul class="CtrlGroup" id="CtrlGroup_PopupDialogOptions">
-					<li class="Ctrl Faded" id="Ctrl_PopupDialogOption1"><button class="Cmdbtn" id="Cmdbtn_PopupDialogOption1" onclick="PopupDialogAnswer(1)">选项1</button></li>
-					<li class="Ctrl Faded" id="Ctrl_PopupDialogOption2"><button class="Cmdbtn" id="Cmdbtn_PopupDialogOption2" onclick="PopupDialogAnswer(2)">选项2</button></li>
-					<li class="Ctrl" id="Ctrl_PopupDialogOption3"><button class="Cmdbtn" id="Cmdbtn_PopupDialogOption3" onclick="PopupDialogAnswer(3)">选项3</button></li>
+					<li class="Ctrl Faded" id="Ctrl_PopupDialogOption1">
+						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption1" onclick="PopupDialogAnswer(1)">选项1</button>
+					</li>
+					<li class="Ctrl Faded" id="Ctrl_PopupDialogOption2">
+						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption2" onclick="PopupDialogAnswer(2)">选项2</button>
+					</li>
+					<li class="Ctrl" id="Ctrl_PopupDialogOption3">
+						<button class="Cmdbtn" id="Cmdbtn_PopupDialogOption3" onclick="PopupDialogAnswer(3)">选项3</button>
+					</li>
 				</ul>
 			</div>
 		</div>
