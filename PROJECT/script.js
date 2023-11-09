@@ -4,10 +4,8 @@
 	// Declare Variables
 	"use strict";
 		// Unsaved
-		var Elements, Looper = 0, Percentage = 0,
-		Automation = {
-			ClockTimer, TimeSeparatorBlink, LotteryRoller
-		};
+		var Elements, Looper = 0, Percentage = 0;
+		Automation.ClockTimer = ""; Automation.TimeSeparatorBlink = ""; Automation.LotteryRoller = "";
 		
 		// Saved
 		var Timer = {
@@ -31,8 +29,9 @@
 		};
 
 	// Load User Data
-	window.onload = function() {
-		if(localStorage.System) {
+	window.onload = Load();
+	function Load() {
+		if(typeof(localStorage.System) != "undefined") {
 			System = JSON.parse(localStorage.getItem("System"));
 		} else {
 			System.I18n.Language = "zh-CN";
@@ -64,15 +63,15 @@
 				break;
 		}
 		RefreshSystem();
-		if(localStorage.TimerPlusLottery_Timer) {
+		if(typeof(localStorage.TimerPlusLottery_Timer) != "undefined") {
 			Timer = JSON.parse(localStorage.getItem("TimerPlusLottery_Timer"));
 		}
 		RefreshTimer();
-		if(localStorage.TimerPlusLottery_Lottery) {
+		if(typeof(localStorage.TimerPlusLottery_Lottery) != "undefined") {
 			Lottery = JSON.parse(localStorage.getItem("TimerPlusLottery_Lottery"));
 		}
 		RefreshLottery();
-	};
+	}
 
 // Refresh
 	// System
@@ -226,7 +225,7 @@
 			Timer.Display[4] = Math.floor(Timer.CurrentTime % 60000 / 10000);
 			Timer.Display[5] = Timer.CurrentTime % 10000 / 1000;
 			Timer.Display[6] = Math.floor(Timer.CurrentTime % 1000 / 10);
-			if(System.Display.Anim.Speed == "none") {
+			if(System.Display.Anim.Speed == 0) {
 				Timer.Display[5] = Math.floor(Timer.Display[5]);
 			} else {
 				if(Timer.Display[5] > 9) {Timer.Display[4] = Timer.Display[4] + (Timer.Display[5] - 9);} // Imitating the cockpit PFD number scrolling effect.
@@ -376,8 +375,8 @@
 
 		// Finish Rolling
 		if(Lottery.Progress > 10) {
-			Lottery.Progress = 0;
 			clearInterval(Automation.LotteryRoller);
+			Lottery.Progress = 0;
 		}
 
 		// Refresh
