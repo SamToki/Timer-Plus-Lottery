@@ -4,7 +4,6 @@
 	// Declare Variables
 	"use strict";
 		// Unsaved
-		var Elements, Looper = 0, Percentage = 0;
 		Automation.ClockTimer = ""; Automation.TimeSeparatorBlink = ""; Automation.LotteryRoller = "";
 		
 		// Saved
