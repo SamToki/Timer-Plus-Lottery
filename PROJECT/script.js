@@ -4,6 +4,13 @@
 	// Declare Variables
 	"use strict";
 		// Unsaved
+		var Timer0 = {
+			ClockTime: 0,
+			Display: [0, 0, 0, 5, 0, 0, 0]
+		},
+		Lottery0 = {
+			Progress: 0
+		};
 		Automation.ClockTimer = ""; Automation.TimeSeparatorBlink = ""; Automation.LotteryRoller = "";
 		
 		// Saved
@@ -11,8 +18,8 @@
 			Duration: 300000, Preset: [0, 300000, 900000, 3600000],
 			UseCountdown: true,
 			IsRunning: false, IsPaused: false,
-			ClockTime: 0, StartTime: 0, EndTime: 0,
-			CurrentTime: 300000, Display: [0, 0, 0, 5, 0, 0, 0],
+			StartTime: 0, EndTime: 0,
+			CurrentTime: 300000,
 			Lap: {
 				Sequence: 1, PreviousCurrentTime: 300000
 			}
@@ -23,8 +30,7 @@
 				Min: 1, Max: 50
 			},
 			PreventDuplication: true,
-			Number: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-			Progress: 0
+			Number: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 		};
 
 	// Load User Data
@@ -181,30 +187,30 @@
 		// Core
 			// Update Current Time First
 			if(Timer.UseCountdown == true) {
-				Timer.CurrentTime = Timer.EndTime - Timer.ClockTime;
+				Timer.CurrentTime = Timer.EndTime - Timer0.ClockTime;
 			} else {
-				Timer.CurrentTime = Timer.Duration - (Timer.EndTime - Timer.ClockTime);
+				Timer.CurrentTime = Timer.Duration - (Timer.EndTime - Timer0.ClockTime);
 			}
 
 			// Clock Time & Start Time & End Time
-			Timer.ClockTime = Date.now() - new Date().getTimezoneOffset() * 60000;
+			Timer0.ClockTime = Date.now() - new Date().getTimezoneOffset() * 60000;
 			if(Timer.IsRunning == false && Timer.IsPaused == false) {
-				Timer.StartTime = Timer.ClockTime;
-				Timer.EndTime = Timer.ClockTime + Timer.Duration;
+				Timer.StartTime = Timer0.ClockTime;
+				Timer.EndTime = Timer0.ClockTime + Timer.Duration;
 			}
 			if(Timer.IsRunning == true && Timer.IsPaused == true) {
 				if(Timer.UseCountdown == true) {
-					Timer.EndTime = Timer.ClockTime + Timer.CurrentTime;
+					Timer.EndTime = Timer0.ClockTime + Timer.CurrentTime;
 				} else {
-					Timer.EndTime = Timer.ClockTime + (Timer.Duration - Timer.CurrentTime);
+					Timer.EndTime = Timer0.ClockTime + (Timer.Duration - Timer.CurrentTime);
 				}
 			}
 
 			// Update Current Time Again
 			if(Timer.UseCountdown == true) {
-				Timer.CurrentTime = Timer.EndTime - Timer.ClockTime;
+				Timer.CurrentTime = Timer.EndTime - Timer0.ClockTime;
 			} else {
-				Timer.CurrentTime = Timer.Duration - (Timer.EndTime - Timer.ClockTime);
+				Timer.CurrentTime = Timer.Duration - (Timer.EndTime - Timer0.ClockTime);
 			}
 
 		// Dashboard
@@ -218,29 +224,29 @@
 			ChangeRotate("Needle_Timer", Timer.CurrentTime / 60000 * 360);
 
 			// Scrolling Numbers
-			Timer.Display[1] = Math.floor(Timer.CurrentTime / 6000000);
-			Timer.Display[2] = Math.floor(Timer.CurrentTime % 6000000 / 600000);
-			Timer.Display[3] = Math.floor(Timer.CurrentTime % 600000 / 60000);
-			Timer.Display[4] = Math.floor(Timer.CurrentTime % 60000 / 10000);
-			Timer.Display[5] = Timer.CurrentTime % 10000 / 1000;
-			Timer.Display[6] = Math.floor(Timer.CurrentTime % 1000 / 10);
+			Timer0.Display[1] = Math.floor(Timer.CurrentTime / 6000000);
+			Timer0.Display[2] = Math.floor(Timer.CurrentTime % 6000000 / 600000);
+			Timer0.Display[3] = Math.floor(Timer.CurrentTime % 600000 / 60000);
+			Timer0.Display[4] = Math.floor(Timer.CurrentTime % 60000 / 10000);
+			Timer0.Display[5] = Timer.CurrentTime % 10000 / 1000;
+			Timer0.Display[6] = Math.floor(Timer.CurrentTime % 1000 / 10);
 			if(System.Display.Anim.Speed == 0) {
-				Timer.Display[5] = Math.floor(Timer.Display[5]);
+				Timer0.Display[5] = Math.floor(Timer0.Display[5]);
 			} else {
-				if(Timer.Display[5] > 9) {Timer.Display[4] = Timer.Display[4] + (Timer.Display[5] - 9);} // Imitating the cockpit PFD number scrolling effect.
-				if(Timer.Display[4] > 5) {Timer.Display[3] = Timer.Display[3] + (Timer.Display[4] - 5);}
-				if(Timer.Display[3] > 9) {Timer.Display[2] = Timer.Display[2] + (Timer.Display[3] - 9);}
-				if(Timer.Display[2] > 9) {Timer.Display[1] = Timer.Display[1] + (Timer.Display[2] - 9);}
+				if(Timer0.Display[5] > 9) {Timer0.Display[4] = Timer0.Display[4] + (Timer0.Display[5] - 9);} // Imitating the cockpit PFD number scrolling effect.
+				if(Timer0.Display[4] > 5) {Timer0.Display[3] = Timer0.Display[3] + (Timer0.Display[4] - 5);}
+				if(Timer0.Display[3] > 9) {Timer0.Display[2] = Timer0.Display[2] + (Timer0.Display[3] - 9);}
+				if(Timer0.Display[2] > 9) {Timer0.Display[1] = Timer0.Display[1] + (Timer0.Display[2] - 9);}
 			}
-			ChangeTop("ScrollingNumber_Timer1", -60 * (9 - Timer.Display[1]) + "px");
-			ChangeTop("ScrollingNumber_Timer2", -60 * (11 - Timer.Display[2]) + "px");
-			ChangeTop("ScrollingNumber_Timer3", -60 * (11 - Timer.Display[3]) + "px");
-			ChangeTop("ScrollingNumber_Timer4", -60 * (7 - Timer.Display[4]) + "px");
-			ChangeTop("ScrollingNumber_Timer5", 20 - 40 * (11 - Timer.Display[5]) + "px");
-			ChangeText("Label_TimerDashboardCurrentTimeMillisec", "." + Timer.Display[6].toLocaleString(undefined, {minimumIntegerDigits: 2}));
+			ChangeTop("ScrollingNumber_Timer1", -60 * (9 - Timer0.Display[1]) + "px");
+			ChangeTop("ScrollingNumber_Timer2", -60 * (11 - Timer0.Display[2]) + "px");
+			ChangeTop("ScrollingNumber_Timer3", -60 * (11 - Timer0.Display[3]) + "px");
+			ChangeTop("ScrollingNumber_Timer4", -60 * (7 - Timer0.Display[4]) + "px");
+			ChangeTop("ScrollingNumber_Timer5", 20 - 40 * (11 - Timer0.Display[5]) + "px");
+			ChangeText("Label_TimerDashboardCurrentTimeMillisec", "." + Timer0.Display[6].toLocaleString(undefined, {minimumIntegerDigits: 2}));
 		
 		// Time Up
-		if(Timer.ClockTime >= Timer.EndTime) {
+		if(Timer0.ClockTime >= Timer.EndTime) {
 			PopupDialogAppear("Timer_TimeUp",
 				"Completion",
 				"计时完成！<br />" +
@@ -309,7 +315,7 @@
 		ChangeText("Label_LotteryDashboardNumber10", Lottery.Number[10]);
 
 		// Ctrls
-		if(Lottery.Progress != 0) {
+		if(Lottery0.Progress != 0) {
 			ChangeDisabled("Cmdbtn_LotteryCtrlRoll", true);
 		} else {
 			ChangeDisabled("Cmdbtn_LotteryCtrlRoll", false);
@@ -370,12 +376,12 @@
 		} while(Lottery.PreventDuplication == true && Lottery.Range.Max - Lottery.Range.Min >= 9 && IsDuplicationInLotteryQueue() == true);
 
 		// Make Progress
-		Lottery.Progress++;
+		Lottery0.Progress++;
 
 		// Finish Rolling
-		if(Lottery.Progress > 10) {
+		if(Lottery0.Progress > 10) {
 			clearInterval(Automation.LotteryRoller);
-			Lottery.Progress = 0;
+			Lottery0.Progress = 0;
 		}
 
 		// Refresh
@@ -469,15 +475,16 @@
 	// Lottery
 		// Ctrls
 		function LotteryRoll() {
-			Lottery.Progress = 1;
+			Lottery0.Progress = 1;
 			Automation.LotteryRoller = setInterval(LotteryRoller, 100);
 			RefreshLottery();
 		}
 		function LotteryReset() {
+			clearInterval(Automation.LotteryRoller);
+			Lottery0.Progress = 0;
 			for(Looper = 1; Looper <= 10; Looper++) {
 				Lottery.Number[Looper] = 0;
 			}
-			Lottery.Progress = 0;
 			RefreshLottery();
 		}
 
