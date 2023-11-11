@@ -478,9 +478,7 @@
 		function LotteryReset() {
 			clearInterval(Automation.LotteryRoller);
 			Lottery0.Progress = 0;
-			for(Looper = 1; Looper <= 10; Looper++) {
-				Lottery.Number[Looper] = 0;
-			}
+			Lottery.Number = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 			RefreshLottery();
 		}
 
