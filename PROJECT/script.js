@@ -11,7 +11,7 @@
 		Lottery0 = {
 			Progress: 0
 		};
-		Automation.ClockTimer = ""; Automation.TimeSeparatorBlink = ""; Automation.LotteryRoller = "";
+		Automation.ClockTimer = 0; Automation.TimeSeparatorBlink = 0; Automation.LotteryRoller = 0;
 		
 		// Saved
 		var Timer = {
