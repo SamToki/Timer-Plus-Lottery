@@ -452,11 +452,7 @@
 			RefreshTimer();
 		}
 		function SetTimerCountdown() {
-			if(document.getElementById("Checkbox_TimerOptionsCountdown").checked) {
-				Timer.UseCountdown = true;
-			} else {
-				Timer.UseCountdown = false;
-			}
+			Timer.UseCountdown = ReadChecked("Checkbox_TimerOptionsCountdown");
 			Timer.Lap.PreviousCurrentTime = Timer.Duration - Timer.Lap.PreviousCurrentTime;
 			RefreshTimer();
 		}
@@ -520,11 +516,7 @@
 			RefreshLottery();
 		}
 		function SetLotteryPreventDuplication() {
-			if(document.getElementById("Checkbox_LotteryOptionsPreventDuplication").checked) {
-				Lottery.PreventDuplication = true;
-			} else {
-				Lottery.PreventDuplication = false;
-			}
+			Lottery.PreventDuplication = ReadChecked("Checkbox_LotteryOptionsPreventDuplication");
 			RefreshLottery();
 		}
 
@@ -565,7 +557,7 @@
 				"", "清空", "取消");
 		}
 	
-	// Popup Dialog Answer
+	// Popup Dialog
 	function PopupDialogAnswer(Selector) {
 		switch(Interaction.PopupDialogEvent) {
 			case "System_LanguageUnsupported":
