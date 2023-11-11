@@ -341,7 +341,7 @@
 				Lottery.Range.Max = 13;
 				break;
 			default:
-				alert("【系统错误】\n函数「RefreshLottery」的参数「Lottery.Mode」为意料之外的值。\n请通过「帮助」版块中的链接向我提供反馈以帮助解决此问题，谢谢！");
+				alert("Error: The value of Lottery.Mode in function RefreshLottery is out of expectation.");
 				break;
 		}
 		ChangeValue("Textbox_LotteryOptionsRangeMin", Lottery.Range.Min);
