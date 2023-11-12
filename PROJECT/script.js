@@ -215,8 +215,8 @@
 
 		// Dashboard
 			// Start Time & End Time
-			ChangeText("Label_TimerDashboardStartTime", Math.floor(Timer.StartTime % 86400000 / 3600000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + ":" + Math.floor(Timer.StartTime % 3600000 / 60000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + ":" + Math.floor(Timer.StartTime % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}));
-			ChangeText("Label_TimerDashboardEndTime", Math.floor(Timer.EndTime % 86400000 / 3600000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + ":" + Math.floor(Timer.EndTime % 3600000 / 60000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + ":" + Math.floor(Timer.EndTime % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}));
+			ChangeText("Label_TimerDashboardStartTime", Math.floor(Timer.StartTime % 86400000 / 3600000).toString().padStart(2, "0") + ":" + Math.floor(Timer.StartTime % 3600000 / 60000).toString().padStart(2, "0") + ":" + Math.floor(Timer.StartTime % 60000 / 1000).toString().padStart(2, "0"));
+			ChangeText("Label_TimerDashboardEndTime", Math.floor(Timer.EndTime % 86400000 / 3600000).toString().padStart(2, "0") + ":" + Math.floor(Timer.EndTime % 3600000 / 60000).toString().padStart(2, "0") + ":" + Math.floor(Timer.EndTime % 60000 / 1000).toString().padStart(2, "0"));
 
 			// Progring & Needle
 			Percentage = Timer.CurrentTime / Timer.Duration * 100;
@@ -243,7 +243,7 @@
 			ChangeTop("ScrollingNumber_Timer3", -60 * (11 - Timer0.Display[3]) + "px");
 			ChangeTop("ScrollingNumber_Timer4", -60 * (7 - Timer0.Display[4]) + "px");
 			ChangeTop("ScrollingNumber_Timer5", 20 - 40 * (11 - Timer0.Display[5]) + "px");
-			ChangeText("Label_TimerDashboardCurrentTimeMillisec", "." + Timer0.Display[6].toLocaleString(undefined, {minimumIntegerDigits: 2}));
+			ChangeText("Label_TimerDashboardCurrentTimeMillisec", "." + Timer0.Display[6].toString().padStart(2, "0"));
 		
 		// Time Up
 		if(Timer0.ClockTime >= Timer.EndTime) {
@@ -251,7 +251,7 @@
 				"Completion",
 				"计时完成！<br />" +
 				"从 " + ReadText("Label_TimerDashboardStartTime") + " 至 " + ReadText("Label_TimerDashboardEndTime") + "。<br />" +
-				"设定时长 " + Math.floor(Timer.Duration / 60000) + "分" + Math.floor(Timer.Duration % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "秒，实际时长 " + Math.floor((Timer.EndTime - Timer.StartTime) / 60000) + "分" + Math.floor((Timer.EndTime - Timer.StartTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "秒。",
+				"设定时长 " + Math.floor(Timer.Duration / 60000) + "分" + Math.floor(Timer.Duration % 60000 / 1000).toString().padStart(2, "0") + "秒，实际时长 " + Math.floor((Timer.EndTime - Timer.StartTime) / 60000) + "分" + Math.floor((Timer.EndTime - Timer.StartTime) % 60000 / 1000).toString().padStart(2, "0") + "秒。",
 				"", "", "确定");
 			if(System.Sound.PlaySound == true) {AudioPlay("Audio_SoundRingtone");}
 			TimerReset();
@@ -280,9 +280,9 @@
 		ChangeChecked("Checkbox_TimerOptionsCountdown", Timer.UseCountdown);
 
 		// Presets
-		ChangeText("Label_TimerPreset1", Math.floor(Timer.Preset[1] / 60000) + ":" + Math.floor(Timer.Preset[1] % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}));
-		ChangeText("Label_TimerPreset2", Math.floor(Timer.Preset[2] / 60000) + ":" + Math.floor(Timer.Preset[2] % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}));
-		ChangeText("Label_TimerPreset3", Math.floor(Timer.Preset[3] / 60000) + ":" + Math.floor(Timer.Preset[3] % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}));
+		ChangeText("Label_TimerPreset1", Math.floor(Timer.Preset[1] / 60000) + ":" + Math.floor(Timer.Preset[1] % 60000 / 1000).toString().padStart(2, "0"));
+		ChangeText("Label_TimerPreset2", Math.floor(Timer.Preset[2] / 60000) + ":" + Math.floor(Timer.Preset[2] % 60000 / 1000).toString().padStart(2, "0"));
+		ChangeText("Label_TimerPreset3", Math.floor(Timer.Preset[3] / 60000) + ":" + Math.floor(Timer.Preset[3] % 60000 / 1000).toString().padStart(2, "0"));
 
 		// Save User Data
 		localStorage.setItem("TimerPlusLottery_Timer", JSON.stringify(Timer));
@@ -415,14 +415,14 @@
 			if(Timer.UseCountdown == true) {
 				ChangeText("Label_TimerCtrlLapRecorder",
 					"#" + Timer.Lap.Sequence +
-					"　+" + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) / 60000) + ":" + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
-					"　" + Math.floor((Timer.Duration - Timer.CurrentTime) / 60000) + ":" + Math.floor((Timer.Duration - Timer.CurrentTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.Duration - Timer.CurrentTime) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "<br />" +
+					"　+" + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) / 60000) + ":" + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) % 60000 / 1000).toString().padStart(2, "0") + "." + Math.floor((Timer.Lap.PreviousCurrentTime - Timer.CurrentTime) % 1000 / 10).toString().padStart(2, "0") +
+					"　" + Math.floor((Timer.Duration - Timer.CurrentTime) / 60000) + ":" + Math.floor((Timer.Duration - Timer.CurrentTime) % 60000 / 1000).toString().padStart(2, "0") + "." + Math.floor((Timer.Duration - Timer.CurrentTime) % 1000 / 10).toString().padStart(2, "0") + "<br />" +
 					ReadText("Label_TimerCtrlLapRecorder"));
 			} else {
 				ChangeText("Label_TimerCtrlLapRecorder",
 					"#" + Timer.Lap.Sequence +
-					"　+" + Math.floor((Timer.CurrentTime - Timer.Lap.PreviousCurrentTime) / 60000) + ":" + Math.floor((Timer.CurrentTime - Timer.Lap.PreviousCurrentTime) % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor((Timer.CurrentTime - Timer.Lap.PreviousCurrentTime) % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) +
-					"　" + Math.floor(Timer.CurrentTime / 60000) + ":" + Math.floor(Timer.CurrentTime % 60000 / 1000).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "." + Math.floor(Timer.CurrentTime % 1000 / 10).toLocaleString(undefined, {minimumIntegerDigits: 2}) + "<br />" +
+					"　+" + Math.floor((Timer.CurrentTime - Timer.Lap.PreviousCurrentTime) / 60000) + ":" + Math.floor((Timer.CurrentTime - Timer.Lap.PreviousCurrentTime) % 60000 / 1000).toString().padStart(2, "0") + "." + Math.floor((Timer.CurrentTime - Timer.Lap.PreviousCurrentTime) % 1000 / 10).toString().padStart(2, "0") +
+					"　" + Math.floor(Timer.CurrentTime / 60000) + ":" + Math.floor(Timer.CurrentTime % 60000 / 1000).toString().padStart(2, "0") + "." + Math.floor(Timer.CurrentTime % 1000 / 10).toString().padStart(2, "0") + "<br />" +
 					ReadText("Label_TimerCtrlLapRecorder"));
 			}
 			Timer.Lap.Sequence++;
