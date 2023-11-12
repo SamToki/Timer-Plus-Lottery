@@ -219,8 +219,7 @@
 			ChangeText("Label_TimerDashboardEndTime", Math.floor(Timer.EndTime % 86400000 / 3600000).toString().padStart(2, "0") + ":" + Math.floor(Timer.EndTime % 3600000 / 60000).toString().padStart(2, "0") + ":" + Math.floor(Timer.EndTime % 60000 / 1000).toString().padStart(2, "0"));
 
 			// Progring & Needle
-			Percentage = Timer.CurrentTime / Timer.Duration * 100;
-			ChangeProgring("ProgringFg_Timer", 917.35 * (100 - Percentage) / 100);
+			ChangeProgring("ProgringFg_Timer", 917.35 * (1 - Timer.CurrentTime / Timer.Duration));
 			ChangeRotate("Needle_Timer", Timer.CurrentTime / 60000 * 360);
 
 			// Scrolling Numbers
