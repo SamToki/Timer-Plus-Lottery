@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="Timer+Lottery，计时与摇号工具。计时器支持倒计时与正计时，以及秒表计圈功能，精确至.01秒；摇号器支持骰子与扑克牌模式。" />
 		<meta name="keywords" content="Sam Toki, SAM TOKI STUDIO, 计时器, 摇号器, Timer+Lottery" />
-		<meta name="version" content="v1.01 (2023/10/19). Since 2023/09/27." />
+		<meta name="version" content="v1.02 (2023/11/13). Since 2023/09/27." />
 		<meta name="author" content="Sam Toki" />
 		<meta name="copyright" content="(C) 2015-2023 SAM TOKI STUDIO" />
 		<title>Timer+Lottery</title>
@@ -101,17 +101,17 @@
 						<ul class="CtrlGroup" id="CtrlGroup_TimerDashboardCurrentTime">
 							<li class="Ctrl Box">
 								<div class="ScrollingNumber" id="ScrollingNumber_Timer1">
-									<p>9</p><p>8</p><p>7</p><p>6</p><p>5</p><p>4</p><p>3</p><p>2</p><p>1</p><p> </p>
+									<span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span> </span>
 								</div>
 							</li>
 							<li class="Ctrl Box">
 								<div class="ScrollingNumber" id="ScrollingNumber_Timer2">
-									<p>1</p><p>0</p><p>9</p><p>8</p><p>7</p><p>6</p><p>5</p><p>4</p><p>3</p><p>2</p><p>1</p><p>0</p><p>9</p>
+									<span>1</span><span>0</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span><span>9</span>
 								</div>
 							</li>
 							<li class="Ctrl Box">
 								<div class="ScrollingNumber" id="ScrollingNumber_Timer3">
-									<p>1</p><p>0</p><p>9</p><p>8</p><p>7</p><p>6</p><p>5</p><p>4</p><p>3</p><p>2</p><p>1</p><p>0</p><p>9</p>
+									<span>1</span><span>0</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span><span>9</span>
 								</div>
 							</li>
 							<li class="Ctrl" id="Ctrl_TimerDashboardCurrentTimeSeparator">
@@ -120,17 +120,17 @@
 							</li>
 							<li class="Ctrl Box">
 								<div class="ScrollingNumber" id="ScrollingNumber_Timer4">
-									<p>1</p><p>0</p><p>5</p><p>4</p><p>3</p><p>2</p><p>1</p><p>0</p><p>5</p>
+									<span>1</span><span>0</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span><span>5</span>
 								</div>
 							</li>
 							<li class="Ctrl Box">
 								<div class="ScrollingNumber" id="ScrollingNumber_Timer5">
-									<p>1</p><p>0</p><p>9</p><p>8</p><p>7</p><p>6</p><p>5</p><p>4</p><p>3</p><p>2</p><p>1</p><p>0</p><p>9</p>
+									<span>1</span><span>0</span><span>9</span><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span><span>0</span><span>9</span>
 								</div>
 							</li>
 							<li class="Ctrl" id="Ctrl_TimerDashboardCurrentTimeMillisec">
-								<p id="Label_TimerDashboardCurrentTimeMillisec">.01<br />
-									秒</p>
+								<span id="Label_TimerDashboardCurrentTimeMillisec">.01<br />
+									秒</span>
 							</li>
 						</ul>
 					</li>
@@ -151,7 +151,7 @@
 									<button class="Cmdbtn" id="Cmdbtn_TimerCtrlReset" onclick="TimerReset()">重置</button>
 								</li>
 								<li class="Ctrl" id="Ctrl_TimerCtrlLapRecorder">
-									<p id="Label_TimerCtrlLapRecorder"></p>
+									<span id="Label_TimerCtrlLapRecorder"></span>
 								</li>
 							</ul>
 						</fieldset>
@@ -219,34 +219,34 @@
 				<h1 class="SectionTitle">摇号</h1>
 				<ul class="CtrlGroup" id="CtrlGroup_LotteryDashboard">
 					<li class="Ctrl Box Ctrl_LotteryDashboardLargeNumber">
-						<p id="Label_LotteryDashboardNumber01">号码</p>
+						<span id="Label_LotteryDashboardNumber01">号码</span>
 					</li>
 					<li class="Ctrl Box Ctrl_LotteryDashboardLargeNumber">
-						<p id="Label_LotteryDashboardNumber02">号码</p>
+						<span id="Label_LotteryDashboardNumber02">号码</span>
 					</li>
 					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
-						<p id="Label_LotteryDashboardNumber03">号码</p>
+						<span id="Label_LotteryDashboardNumber03">号码</span>
 					</li>
 					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
-						<p id="Label_LotteryDashboardNumber04">号码</p>
+						<span id="Label_LotteryDashboardNumber04">号码</span>
 					</li>
 					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
-						<p id="Label_LotteryDashboardNumber05">号码</p>
+						<span id="Label_LotteryDashboardNumber05">号码</span>
 					</li>
 					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
-						<p id="Label_LotteryDashboardNumber06">号码</p>
+						<span id="Label_LotteryDashboardNumber06">号码</span>
 					</li>
 					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
-						<p id="Label_LotteryDashboardNumber07">号码</p>
+						<span id="Label_LotteryDashboardNumber07">号码</span>
 					</li>
 					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
-						<p id="Label_LotteryDashboardNumber08">号码</p>
+						<span id="Label_LotteryDashboardNumber08">号码</span>
 					</li>
 					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
-						<p id="Label_LotteryDashboardNumber09">号码</p>
+						<span id="Label_LotteryDashboardNumber09">号码</span>
 					</li>
 					<li class="Ctrl Box Ctrl_LotteryDashboardSmallNumber">
-						<p id="Label_LotteryDashboardNumber10">号码</p>
+						<span id="Label_LotteryDashboardNumber10">号码</span>
 					</li>
 				</ul>
 
@@ -456,7 +456,7 @@
 						<fieldset>
 							<legend>关于</legend>
 							<p>Timer+Lottery</p>
-							<p>版本 v1.01 (<time datetime="2023-10-19" pubdate="pubdate">2023/10/19</time>)<br />
+							<p>版本 v1.02 (<time datetime="2023-11-13" pubdate="pubdate">2023/11/13</time>)<br />
 								始于 2023/09/27</p>
 							<p><a href="https://github.com/SamToki/Web---Timer-Plus-Lottery">查看 GitHub 项目</a></p>
 						</fieldset>

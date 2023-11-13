@@ -70,12 +70,12 @@ nav .Ctrl {
 		#ScrollingNumber_Timer5 {
 			top: calc(20px - 40px * 11);
 		}
-		.ScrollingNumber p {
-			width: 100%; height: 40px; padding: 0; margin: 20px 0;
+		.ScrollingNumber span {
+			width: 100%; height: 40px; margin: 20px 0;
 			font-size: 40px;
 			display: flex; justify-content: center; align-items: center;
 		}
-		#ScrollingNumber_Timer5 p {
+		#ScrollingNumber_Timer5 span {
 			margin: 0;
 		}
 		#Timer #Ctrl_TimerDashboardCurrentTimeSeparator {
@@ -129,10 +129,10 @@ nav .Ctrl {
 		.Ctrl_LotteryDashboardSmallNumber {
 			width: 100px; height: 60px;
 		}
-		.Ctrl_LotteryDashboardLargeNumber p {
+		.Ctrl_LotteryDashboardLargeNumber span {
 			font-size: 48px;
 		}
-		.Ctrl_LotteryDashboardSmallNumber p {
+		.Ctrl_LotteryDashboardSmallNumber span {
 			font-size: 24px;
 		}
 
@@ -176,10 +176,10 @@ nav .Ctrl {
 	.Ctrl_LotteryDashboardSmallNumber {
 		width: 75px; height: 45px;
 	}
-	.Ctrl_LotteryDashboardLargeNumber p {
+	.Ctrl_LotteryDashboardLargeNumber span {
 		font-size: 36px;
 	}
-	.Ctrl_LotteryDashboardSmallNumber p {
+	.Ctrl_LotteryDashboardSmallNumber span {
 		font-size: 16px;
 	}
 }

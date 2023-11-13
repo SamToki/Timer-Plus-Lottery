@@ -78,6 +78,15 @@
 		RefreshLottery();
 	}
 
+	// Pause Before Quitting
+	window.onbeforeunload = Quit();
+	function Quit() {
+		if(Timer.IsRunning == true && Timer.IsPaused == false) {
+			Timer.IsPaused = true;
+			RefreshTimer();
+		}
+	}
+
 // Refresh
 	// System
 	function RefreshSystem() {
@@ -179,7 +188,7 @@
 		// Change Self Update Freq
 		clearInterval(Automation.ClockTimer);
 		if(Timer.IsRunning == true && Timer.IsPaused == false) {
-			Automation.ClockTimer = setInterval(ClockTimer, 10);
+			Automation.ClockTimer = setInterval(ClockTimer, 20);
 		} else {
 			Automation.ClockTimer = setInterval(ClockTimer, 500);
 		}
@@ -219,6 +228,13 @@
 			ChangeText("Label_TimerDashboardEndTime", Math.floor(Timer.EndTime % 86400000 / 3600000).toString().padStart(2, "0") + ":" + Math.floor(Timer.EndTime % 3600000 / 60000).toString().padStart(2, "0") + ":" + Math.floor(Timer.EndTime % 60000 / 1000).toString().padStart(2, "0"));
 
 			// Progring & Needle
+			if(Timer.IsRunning == true && Timer.IsPaused == false && System.Display.Anim.Speed != 0) {
+				ChangeAnim("ProgringFg_Timer", "100ms");
+				ChangeAnim("Needle_Timer", "100ms");
+			} else {
+				ChangeAnim("ProgringFg_Timer", "");
+				ChangeAnim("Needle_Timer", "");
+			}
 			ChangeProgring("ProgringFg_Timer", 917.35 * (1 - Timer.CurrentTime / Timer.Duration));
 			ChangeRotate("Needle_Timer", Timer.CurrentTime / 60000 * 360);
 
@@ -372,7 +388,11 @@
 					Lottery.Number[1] = "K";
 				}
 			}
-		} while(Lottery.PreventDuplication == true && Lottery.Range.Max - Lottery.Range.Min >= 9 && IsDuplicationInLotteryQueue() == true);
+		} while(
+			Lottery.PreventDuplication == true &&
+			Lottery.Range.Max - Lottery.Range.Min >= 9 &&
+			IsDuplicationInLotteryQueue() == true
+		);
 
 		// Make Progress
 		Lottery0.Progress++;
@@ -471,6 +491,7 @@
 		// Ctrls
 		function LotteryRoll() {
 			Lottery0.Progress = 1;
+			clearInterval(Automation.LotteryRoller);
 			Automation.LotteryRoller = setInterval(LotteryRoller, 100);
 			RefreshLottery();
 		}
@@ -601,5 +622,4 @@
 	}
 
 // Automations
-	// Time Separator Blink
-	Automation.TimeSeparatorBlink = setInterval(TimeSeparatorBlink, 500);
+Automation.TimeSeparatorBlink = setInterval(TimeSeparatorBlink, 500);
